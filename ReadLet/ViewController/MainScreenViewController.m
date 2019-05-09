@@ -10,6 +10,8 @@
 #import "NewsLetter.h"
 #import "NewsLetterElementView.h"
 #import "ContentViewController.h"
+#import "AFNetworking.h"
+#import "Constants.h"
 @interface MainScreenViewController ()
 
 @end
@@ -31,7 +33,7 @@
 {
     self = [super init];
     if (self) {
-        all_news_letters_data = [self getNewsLetters];
+        all_news_letters_data = [[NSMutableArray alloc] init];
         
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
         _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
@@ -46,6 +48,7 @@
         
         [self.view addSubview:_collectionView];
 
+        [self fetchData];
         
     }
     return self;
@@ -69,12 +72,12 @@
     a.article_center_image_name = @"tc";
     a.article_title = @"Techcrunch Daily";
     a.artcile_sub_title = @"Uber and Lyft drivers are striking ahead of the IPO";
-    a.url_for_content = @"https://techcrunch.com/";
+    a.url_for_content = @"https://www.readlet.io/registration/read_email";
     
     b.article_center_image_name = @"yc";
     b.article_title = @"Hacker News";
     b.artcile_sub_title = @"Since 2010, we've put out a weekly newsletter of the best articles on startups, technology, programming, and more. All links are curated by hand from Hacker News";
-    b.url_for_content = @"https://hackernewsletter.com/";
+    b.url_for_content = @"https://www.readlet.io/registration/read_email/kb3dvsmh6a1iqgpaots90a1ikp3h227ejd7dpog1";
 
     
     c.article_center_image_name = @"gates";
@@ -89,7 +92,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return [all_news_letters_data count];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -144,6 +147,38 @@
 
 - (void) cancelButtonAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void) fetchData {
+    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/read_news_letters"];
+    NSURL *URL = [NSURL URLWithString:urlstring];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSArray *message_data = (NSArray *)responseObject;
+        NSMutableArray *all_letters = [[NSMutableArray alloc] init];
+
+        for (id message_c in message_data) {
+            NSString  *message_url = [message_c objectForKey:@"message_url"];
+
+            NewsLetter *a = [[NewsLetter alloc] init];
+            a.article_center_image_name = @"tc";
+            a.article_title = @"Techcrunch Daily";
+            a.artcile_sub_title = @"ok";
+            a.url_for_content = message_url;
+            [all_letters addObject:a];
+        }
+        
+        self->all_news_letters_data = all_letters;
+        [self->_collectionView reloadData];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 

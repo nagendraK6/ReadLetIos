@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3546DE82E24CE450E448EFF9 /* libPods-ReadLetTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0BD5E1B549AFC1EF947B7E /* libPods-ReadLetTests.a */; };
+		67BE60C09EE77F37A85192D6 /* libPods-ReadLetUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB698B439D8E6E2E1002968 /* libPods-ReadLetUITests.a */; };
 		8531367E22812367009EB0D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8531367D22812367009EB0D2 /* AppDelegate.m */; };
 		8531368122812367009EB0D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8531368022812367009EB0D2 /* ViewController.m */; };
 		8531368622812368009EB0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8531368522812368009EB0D2 /* Assets.xcassets */; };
@@ -17,6 +19,7 @@
 		853136B522812471009EB0D2 /* NewsLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B422812471009EB0D2 /* NewsLetter.m */; };
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
+		E905559239350BECC7F0D861 /* libPods-ReadLet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadLet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56DD1BD48A515D1D65FBA0F3 /* Pods-ReadLet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet.debug.xcconfig"; sourceTree = "<group>"; };
 		8531367922812367009EB0D2 /* ReadLet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadLet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8531367C22812367009EB0D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8531367D22812367009EB0D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,6 +64,14 @@
 		853136B822812EA0009EB0D2 /* NewsLetterElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsLetterElementView.m; sourceTree = "<group>"; };
 		853136BA228136D9009EB0D2 /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		85F422172283B723005C655E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8CB698B439D8E6E2E1002968 /* libPods-ReadLetUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadLetUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91DE58EDACE21717CA7DB2D9 /* Pods-ReadLetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLetUITests/Pods-ReadLetUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9DABDCB74F92E3F0554E60AE /* Pods-ReadLet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLet.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet.release.xcconfig"; sourceTree = "<group>"; };
+		9F3C45AF690C6824C6843E00 /* Pods-ReadLetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLetTests/Pods-ReadLetTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A43AE953BE133F24920DE1EE /* Pods-ReadLetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLetUITests/Pods-ReadLetUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC0BD5E1B549AFC1EF947B7E /* libPods-ReadLetTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadLetTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA78F9010A7E24EB479D7227 /* Pods-ReadLetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLetTests/Pods-ReadLetTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E905559239350BECC7F0D861 /* libPods-ReadLet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3546DE82E24CE450E448EFF9 /* libPods-ReadLetTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +95,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67BE60C09EE77F37A85192D6 /* libPods-ReadLetUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6615B4100C5AB1B65F11A82B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56DD1BD48A515D1D65FBA0F3 /* Pods-ReadLet.debug.xcconfig */,
+				9DABDCB74F92E3F0554E60AE /* Pods-ReadLet.release.xcconfig */,
+				9F3C45AF690C6824C6843E00 /* Pods-ReadLetTests.debug.xcconfig */,
+				DA78F9010A7E24EB479D7227 /* Pods-ReadLetTests.release.xcconfig */,
+				A43AE953BE133F24920DE1EE /* Pods-ReadLetUITests.debug.xcconfig */,
+				91DE58EDACE21717CA7DB2D9 /* Pods-ReadLetUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		72BD154DE3642AFC6479E4D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */,
+				AC0BD5E1B549AFC1EF947B7E /* libPods-ReadLetTests.a */,
+				8CB698B439D8E6E2E1002968 /* libPods-ReadLetUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8531367022812367009EB0D2 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +132,8 @@
 				8531369422812368009EB0D2 /* ReadLetTests */,
 				8531369F22812368009EB0D2 /* ReadLetUITests */,
 				8531367A22812367009EB0D2 /* Products */,
+				6615B4100C5AB1B65F11A82B /* Pods */,
+				72BD154DE3642AFC6479E4D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +160,7 @@
 				8531368522812368009EB0D2 /* Assets.xcassets */,
 				8531368A22812368009EB0D2 /* Info.plist */,
 				8531368B22812368009EB0D2 /* main.m */,
+				85F422172283B723005C655E /* Constants.h */,
 			);
 			path = ReadLet;
 			sourceTree = "<group>";
@@ -177,6 +219,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 853136A522812368009EB0D2 /* Build configuration list for PBXNativeTarget "ReadLet" */;
 			buildPhases = (
+				B54451264AC8252B9DE80017 /* [CP] Check Pods Manifest.lock */,
 				8531367522812367009EB0D2 /* Sources */,
 				8531367622812367009EB0D2 /* Frameworks */,
 				8531367722812367009EB0D2 /* Resources */,
@@ -194,6 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 853136A822812368009EB0D2 /* Build configuration list for PBXNativeTarget "ReadLetTests" */;
 			buildPhases = (
+				24B5D5141BE411630BE3F1E6 /* [CP] Check Pods Manifest.lock */,
 				8531368D22812368009EB0D2 /* Sources */,
 				8531368E22812368009EB0D2 /* Frameworks */,
 				8531368F22812368009EB0D2 /* Resources */,
@@ -212,6 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 853136AB22812368009EB0D2 /* Build configuration list for PBXNativeTarget "ReadLetUITests" */;
 			buildPhases = (
+				802660ED18A4EE9872757701 /* [CP] Check Pods Manifest.lock */,
 				8531369822812368009EB0D2 /* Sources */,
 				8531369922812368009EB0D2 /* Frameworks */,
 				8531369A22812368009EB0D2 /* Resources */,
@@ -292,6 +337,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24B5D5141BE411630BE3F1E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReadLetTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		802660ED18A4EE9872757701 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReadLetUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B54451264AC8252B9DE80017 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReadLet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8531367522812367009EB0D2 /* Sources */ = {
@@ -454,6 +568,7 @@
 		};
 		853136A622812368009EB0D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56DD1BD48A515D1D65FBA0F3 /* Pods-ReadLet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -471,6 +586,7 @@
 		};
 		853136A722812368009EB0D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DABDCB74F92E3F0554E60AE /* Pods-ReadLet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +604,7 @@
 		};
 		853136A922812368009EB0D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F3C45AF690C6824C6843E00 /* Pods-ReadLetTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -507,6 +624,7 @@
 		};
 		853136AA22812368009EB0D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA78F9010A7E24EB479D7227 /* Pods-ReadLetTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +644,7 @@
 		};
 		853136AC22812368009EB0D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A43AE953BE133F24920DE1EE /* Pods-ReadLetUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC693DJEZK;
@@ -544,6 +663,7 @@
 		};
 		853136AD22812368009EB0D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91DE58EDACE21717CA7DB2D9 /* Pods-ReadLetUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC693DJEZK;
