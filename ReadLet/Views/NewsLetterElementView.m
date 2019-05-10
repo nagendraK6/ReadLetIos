@@ -35,7 +35,10 @@
         
         title = [[UILabel alloc] init];
         title.text = news_letter.article_title;
-        title.font = [UIFont boldSystemFontOfSize:25];
+        title.lineBreakMode = NSLineBreakByWordWrapping;
+        title.numberOfLines = 0;
+
+        title.font = [UIFont boldSystemFontOfSize:20];
         
         sub_title = [[UILabel alloc] init];
         sub_title.text = news_letter.artcile_sub_title;
@@ -59,7 +62,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     cover_image.frame = CGRectMake(0, 0, self.frame.size.width, 200);
-    title.frame = CGRectMake(10, 210, self.frame.size.width, 25);
+    title.frame = CGRectMake(10, 210, self.frame.size.width, 55);
     sub_title.frame = CGRectMake(10, 235, self.frame.size.width - 15, 100);
 }
 

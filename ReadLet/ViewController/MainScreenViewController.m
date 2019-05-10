@@ -165,10 +165,11 @@
 
         for (id message_c in message_data) {
             NSString  *message_url = [message_c objectForKey:@"message_url"];
+            NSString  *title = [message_c objectForKey:@"title"];
 
             NewsLetter *a = [[NewsLetter alloc] init];
             a.article_center_image_name = @"tc";
-            a.article_title = @"Techcrunch Daily";
+            a.article_title = title;
             a.artcile_sub_title = @"ok";
             a.url_for_content = message_url;
             [all_letters addObject:a];
