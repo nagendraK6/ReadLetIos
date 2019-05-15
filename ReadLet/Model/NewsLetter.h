@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsLetter : NSObject
 
+@property (strong, nonatomic) NSString *article_provider_name;
+
 @property (strong, nonatomic) NSString *article_title;
 
 @property (strong, nonatomic) NSString *artcile_sub_title;

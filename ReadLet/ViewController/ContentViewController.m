@@ -10,7 +10,9 @@
 #import <WebKit/WebKit.h>
 
 @interface ContentViewController ()
-
+{
+    WKWebView *webView;
+}
 @end
 
 @implementation ContentViewController
@@ -26,8 +28,8 @@
         self.view.backgroundColor = [UIColor whiteColor];
         
         WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
-        //webView.navigationDelegate = self;
+        webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
+        webView.navigationDelegate = self;
         NSURL *nsurl=[NSURL URLWithString:url_link];
         NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
         [webView loadRequest:nsrequest];
@@ -36,6 +38,17 @@
         
     }
     return self;
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    //this is a 'new window action' (aka target="_blank") > open this URL externally. If we´re doing nothing here, WKWebView will also just do nothing. Maybe this will change in a later stage of the iOS 8 Beta
+    if (!navigationAction.targetFrame) {
+        NSURL *url = navigationAction.request.URL;
+        NSURLRequest *nsrequest=[NSURLRequest requestWithURL:url];
+        [webView loadRequest:nsrequest];
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 /*

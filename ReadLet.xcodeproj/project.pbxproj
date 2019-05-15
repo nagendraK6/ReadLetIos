@@ -19,6 +19,7 @@
 		853136B522812471009EB0D2 /* NewsLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B422812471009EB0D2 /* NewsLetter.m */; };
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
+		85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F4221922864803005C655E /* NewsElementProviderTitleView.m */; };
 		E905559239350BECC7F0D861 /* libPods-ReadLet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		853136BA228136D9009EB0D2 /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		85F422172283B723005C655E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		85F4221822864803005C655E /* NewsElementProviderTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsElementProviderTitleView.h; sourceTree = "<group>"; };
+		85F4221922864803005C655E /* NewsElementProviderTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsElementProviderTitleView.m; sourceTree = "<group>"; };
 		8CB698B439D8E6E2E1002968 /* libPods-ReadLetUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadLetUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DE58EDACE21717CA7DB2D9 /* Pods-ReadLetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLetUITests/Pods-ReadLetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9DABDCB74F92E3F0554E60AE /* Pods-ReadLet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLet.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 			children = (
 				853136B722812EA0009EB0D2 /* NewsLetterElementView.h */,
 				853136B822812EA0009EB0D2 /* NewsLetterElementView.m */,
+				85F4221822864803005C655E /* NewsElementProviderTitleView.h */,
+				85F4221922864803005C655E /* NewsElementProviderTitleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */,
 				8531368122812367009EB0D2 /* ViewController.m in Sources */,

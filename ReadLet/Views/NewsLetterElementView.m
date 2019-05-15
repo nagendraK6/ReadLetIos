@@ -7,14 +7,16 @@
 //
 
 #import "NewsLetterElementView.h"
+#import "NewsElementProviderTitleView.h"
 #import "NewsLetter.h"
 
 @implementation NewsLetterElementView
 {
-    UIImageView *cover_image;
     UILabel *title;
     UILabel *sub_title;
     NewsLetter *elm;
+    NewsElementProviderTitleView *top_title;
+    UIImageView *creator_image;
 
 }
 /*
@@ -30,8 +32,11 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         elm = news_letter;
-        cover_image = [[UIImageView alloc] init];
-        cover_image.image = [UIImage imageNamed:news_letter.article_center_image_name];
+        
+        top_title = [[NewsElementProviderTitleView alloc] initWithText:news_letter.article_provider_name];
+        
+        creator_image = [[UIImageView alloc] init];
+        creator_image.image = [UIImage imageNamed:news_letter.article_center_image_name];
         
         title = [[UILabel alloc] init];
         title.text = news_letter.article_title;
@@ -41,13 +46,16 @@
         title.font = [UIFont boldSystemFontOfSize:20];
         
         sub_title = [[UILabel alloc] init];
-        sub_title.text = news_letter.artcile_sub_title;
+        sub_title.text = [NSString stringWithFormat:@"By: %@", news_letter.article_provider_name];
         sub_title.lineBreakMode = NSLineBreakByWordWrapping;
         sub_title.numberOfLines = 0;
+        sub_title.font = [UIFont systemFontOfSize:13.0];
 
-        [self addSubview:cover_image];
+
         [self addSubview:title];
         [self addSubview:sub_title];
+        [self addSubview:top_title];
+        [self addSubview:creator_image];
 
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -61,9 +69,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    cover_image.frame = CGRectMake(0, 0, self.frame.size.width, 200);
-    title.frame = CGRectMake(10, 210, self.frame.size.width, 55);
-    sub_title.frame = CGRectMake(10, 235, self.frame.size.width - 15, 100);
+    creator_image.frame =  CGRectMake(16, 16, 50, 50);
+    title.frame = CGRectMake(100, 16, self.frame.size.width - 100, 55);
+    sub_title.frame = CGRectMake(100, 75, self.frame.size.width - 100, 15);
 }
 
 

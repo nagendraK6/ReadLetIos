@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ContentViewController : UIViewController
+@interface ContentViewController : UIViewController<WKNavigationDelegate>
 
 - (id) initWithURLString:(NSString *) url_link;
 
