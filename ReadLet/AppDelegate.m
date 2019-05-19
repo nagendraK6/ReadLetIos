@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MainScreenViewController.h"
-
+#import "GetStartedViewController.h"
+#import "SubscribeNewsletterViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +22,35 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[MainScreenViewController alloc] init];
+    
+    
+    UIViewController *vc;
+    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+    NSDictionary *user_info = [data objectForKey:@"user_info"];
+    
+    if (user_info != nil) {
+        // read the token
+        NSLog(@"Sending for verification");
+        NSString *user_token = [user_info objectForKey:@"user_token"];
+        if (user_token != nil) {
+            NSObject *has_subscribed = [user_info objectForKey:@"has_subscribed"];
+            if (has_subscribed != nil) {
+                vc = [[MainScreenViewController alloc] init];
+            } else {
+                vc = [[GetStartedViewController alloc] init];
+            }
+        } else {
+            vc = [[GetStartedViewController alloc] init];
+        }
+    } else {
+        vc = [[GetStartedViewController alloc] init];
+        NSLog(@"Load the phone registration view");
+    }
+    
+    self.window.rootViewController = vc;
+
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

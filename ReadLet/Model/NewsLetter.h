@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSString *url_for_content;
 
+@property (strong, nonatomic) NSString *provider_url;
+
+@property (strong, nonatomic) NSString *content_date_time;
 
 @end
 

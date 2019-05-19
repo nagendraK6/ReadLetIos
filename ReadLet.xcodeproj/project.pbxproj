@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3546DE82E24CE450E448EFF9 /* libPods-ReadLetTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0BD5E1B549AFC1EF947B7E /* libPods-ReadLetTests.a */; };
 		67BE60C09EE77F37A85192D6 /* libPods-ReadLetUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB698B439D8E6E2E1002968 /* libPods-ReadLetUITests.a */; };
+		850942662291A7A4004A7B4C /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 850942652291A7A4004A7B4C /* HeaderView.m */; };
 		8531367E22812367009EB0D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8531367D22812367009EB0D2 /* AppDelegate.m */; };
 		8531368122812367009EB0D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8531368022812367009EB0D2 /* ViewController.m */; };
 		8531368622812368009EB0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8531368522812368009EB0D2 /* Assets.xcassets */; };
@@ -19,6 +20,13 @@
 		853136B522812471009EB0D2 /* NewsLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B422812471009EB0D2 /* NewsLetter.m */; };
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
+		85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */; };
+		85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */; };
+		85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDF228E63EC00B1F06D /* Provider.m */; };
+		85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */; };
+		85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99B228E2A26000216C5 /* GetStartedViewController.m */; };
+		85DFF99F228E2FD0000216C5 /* PhoneNoAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */; };
+		85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF9A1228E3066000216C5 /* OTPVerificationViewController.m */; };
 		85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F4221922864803005C655E /* NewsElementProviderTitleView.m */; };
 		E905559239350BECC7F0D861 /* libPods-ReadLet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */; };
 /* End PBXBuildFile section */
@@ -43,6 +51,8 @@
 /* Begin PBXFileReference section */
 		2253829BDE3607337ABC26D1 /* libPods-ReadLet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadLet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DD1BD48A515D1D65FBA0F3 /* Pods-ReadLet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadLet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet.debug.xcconfig"; sourceTree = "<group>"; };
+		850942642291A7A4004A7B4C /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		850942652291A7A4004A7B4C /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		8531367922812367009EB0D2 /* ReadLet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadLet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8531367C22812367009EB0D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8531367D22812367009EB0D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,6 +75,20 @@
 		853136B822812EA0009EB0D2 /* NewsLetterElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsLetterElementView.m; sourceTree = "<group>"; };
 		853136BA228136D9009EB0D2 /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		85B1DED8228E597100B1F06D /* NameAddRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameAddRegistrationViewController.h; sourceTree = "<group>"; };
+		85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameAddRegistrationViewController.m; sourceTree = "<group>"; };
+		85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeNewsletterViewController.h; sourceTree = "<group>"; };
+		85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscribeNewsletterViewController.m; sourceTree = "<group>"; };
+		85B1DEDE228E63EC00B1F06D /* Provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
+		85B1DEDF228E63EC00B1F06D /* Provider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
+		85B1DEE1228E64FF00B1F06D /* ProviderElementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderElementView.h; sourceTree = "<group>"; };
+		85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderElementView.m; sourceTree = "<group>"; };
+		85DFF99A228E2A26000216C5 /* GetStartedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetStartedViewController.h; sourceTree = "<group>"; };
+		85DFF99B228E2A26000216C5 /* GetStartedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetStartedViewController.m; sourceTree = "<group>"; };
+		85DFF99D228E2FD0000216C5 /* PhoneNoAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNoAskViewController.h; sourceTree = "<group>"; };
+		85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNoAskViewController.m; sourceTree = "<group>"; };
+		85DFF9A0228E3066000216C5 /* OTPVerificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTPVerificationViewController.h; sourceTree = "<group>"; };
+		85DFF9A1228E3066000216C5 /* OTPVerificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTPVerificationViewController.m; sourceTree = "<group>"; };
 		85F422172283B723005C655E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		85F4221822864803005C655E /* NewsElementProviderTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsElementProviderTitleView.h; sourceTree = "<group>"; };
 		85F4221922864803005C655E /* NewsElementProviderTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsElementProviderTitleView.m; sourceTree = "<group>"; };
@@ -193,6 +217,16 @@
 				853136B02281241E009EB0D2 /* MainScreenViewController.m */,
 				853136BA228136D9009EB0D2 /* ContentViewController.h */,
 				853136BB228136D9009EB0D2 /* ContentViewController.m */,
+				85DFF99A228E2A26000216C5 /* GetStartedViewController.h */,
+				85DFF99B228E2A26000216C5 /* GetStartedViewController.m */,
+				85DFF99D228E2FD0000216C5 /* PhoneNoAskViewController.h */,
+				85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */,
+				85DFF9A0228E3066000216C5 /* OTPVerificationViewController.h */,
+				85DFF9A1228E3066000216C5 /* OTPVerificationViewController.m */,
+				85B1DED8228E597100B1F06D /* NameAddRegistrationViewController.h */,
+				85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */,
+				85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */,
+				85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -202,6 +236,8 @@
 			children = (
 				853136B322812471009EB0D2 /* NewsLetter.h */,
 				853136B422812471009EB0D2 /* NewsLetter.m */,
+				85B1DEDE228E63EC00B1F06D /* Provider.h */,
+				85B1DEDF228E63EC00B1F06D /* Provider.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +249,10 @@
 				853136B822812EA0009EB0D2 /* NewsLetterElementView.m */,
 				85F4221822864803005C655E /* NewsElementProviderTitleView.h */,
 				85F4221922864803005C655E /* NewsElementProviderTitleView.m */,
+				85B1DEE1228E64FF00B1F06D /* ProviderElementView.h */,
+				85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */,
+				850942642291A7A4004A7B4C /* HeaderView.h */,
+				850942652291A7A4004A7B4C /* HeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -418,12 +458,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */,
+				85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */,
+				85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */,
+				85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
+				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
 				853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */,
+				85DFF99F228E2FD0000216C5 /* PhoneNoAskViewController.m in Sources */,
 				8531368122812367009EB0D2 /* ViewController.m in Sources */,
 				853136B12281241E009EB0D2 /* MainScreenViewController.m in Sources */,
 				853136B522812471009EB0D2 /* NewsLetter.m in Sources */,
+				850942662291A7A4004A7B4C /* HeaderView.m in Sources */,
+				85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */,
 				8531368C22812368009EB0D2 /* main.m in Sources */,
+				85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */,
 				8531367E22812367009EB0D2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

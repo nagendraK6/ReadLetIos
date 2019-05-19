@@ -12,6 +12,9 @@
 #import "ContentViewController.h"
 #import "AFNetworking.h"
 #import "Constants.h"
+#import "SubscribeNewsletterViewController.h"
+#import "HeaderView.h"
+
 @interface MainScreenViewController ()
 
 @end
@@ -20,6 +23,8 @@
 {
     UICollectionView *_collectionView;
     NSMutableArray *all_news_letters_data;
+    UIImageView *manage;
+    HeaderView *header;
 
 }
 - (void)viewDidLoad {
@@ -40,13 +45,19 @@
                                                    object:nil];
         
         all_news_letters_data = [[NSMutableArray alloc] init];
-        
+        manage = [[UIImageView alloc] init];
+        manage.image = [UIImage imageNamed:@"manage"];
+        header = [[HeaderView alloc] init];
+
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
         [layout setMinimumLineSpacing:0.0f];
         _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-        _collectionView.frame = CGRectMake(0 , 80 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
         
         
+        _collectionView.frame = CGRectMake(0 , 100 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
+        manage.frame = CGRectMake(self.view.bounds.size.width -50 , 50   ,25 ,25);
+        header.frame = CGRectMake(0 , 50   ,self.view.bounds.size.width  ,30);
+
         [_collectionView setDataSource:self];
         [_collectionView setDelegate:self];
         
@@ -54,11 +65,40 @@
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         
         [self.view addSubview:_collectionView];
+        [self.view addSubview:header];
+        [self.view addSubview:manage];
 
+        
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleSingleTap:)];
+        [manage addGestureRecognizer:singleFingerTap];
+        [manage setUserInteractionEnabled:YES];
+        
+        
         [self fetchData];
         
     }
     return self;
+}
+
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    // open subscription controller
+    SubscribeNewsletterViewController *vc = [[SubscribeNewsletterViewController alloc] init];
+    
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:(UIBarButtonItemStyleDone) target:self action:@selector(cancelButtonAction:)];
+    vc.navigationItem.leftBarButtonItem = doneButton;
+
+    
+    
+    [self presentViewController:navigation animated:YES completion:^{
+        NSLog(@"Completed");
+    }];
 }
 
 - (void) applicationDidBecomeActive {
@@ -95,10 +135,6 @@
     new_element.frame = cell.bounds;
     new_element.delegate = self;
     [cell.contentView addSubview:new_element];
-    
-    cell.contentView.layer.borderWidth = 1.0f;
-    cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    cell.contentView.layer.masksToBounds = YES;
     return cell;
 }
 
@@ -127,15 +163,28 @@
 }
 
 - (void) fetchData {
-    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/read_news_letters"];
-    NSURL *URL = [NSURL URLWithString:urlstring];
+    
+    
+    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+    NSDictionary *user_info = [data objectForKey:@"user_info"];
+    NSString *user_token = [user_info objectForKey:@"user_token"];
+    
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", user_token] forHTTPHeaderField:@"Authorization"];
+
     
-    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    
+    
+    
+    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/get_my_newsletters"];
+    NSURL *URL = [NSURL URLWithString:urlstring];
+    
+        
+    
+    [manager POST:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSArray *message_data = (NSArray *)responseObject;
         NSMutableArray *all_letters = [[NSMutableArray alloc] init];
 
@@ -144,13 +193,14 @@
             NSString  *title = [message_c objectForKey:@"title"];
             NSString  *date = [message_c objectForKey:@"date"];
             NSString  *provider_name = [message_c objectForKey:@"provider_name"];
-
+            NSString *provider_url = [message_c objectForKey:@"provider_url"];
+            
             NewsLetter *a = [[NewsLetter alloc] init];
-            a.article_center_image_name = @"yc";
             a.article_title = title;
-            a.artcile_sub_title = date;
+            a.content_date_time = date;
             a.url_for_content = message_url;
             a.article_provider_name = provider_name;
+            a.provider_url = provider_url;
             [all_letters addObject:a];
         }
         

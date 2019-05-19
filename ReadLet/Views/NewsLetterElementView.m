@@ -9,11 +9,13 @@
 #import "NewsLetterElementView.h"
 #import "NewsElementProviderTitleView.h"
 #import "NewsLetter.h"
+#import "SDWebImage.h"
 
 @implementation NewsLetterElementView
 {
     UILabel *title;
     UILabel *sub_title;
+    UILabel *date_title;
     NewsLetter *elm;
     NewsElementProviderTitleView *top_title;
     UIImageView *creator_image;
@@ -37,23 +39,39 @@
         
         creator_image = [[UIImageView alloc] init];
         creator_image.image = [UIImage imageNamed:news_letter.article_center_image_name];
+        if (![news_letter.provider_url isEqualToString:@""]) {
+            [creator_image sd_setImageWithURL:[NSURL URLWithString:news_letter.provider_url]];
+            creator_image.contentMode = UIViewContentModeScaleAspectFit;
+        }
+        
         
         title = [[UILabel alloc] init];
         title.text = news_letter.article_title;
         title.lineBreakMode = NSLineBreakByWordWrapping;
         title.numberOfLines = 0;
 
-        title.font = [UIFont boldSystemFontOfSize:20];
+        title.font = [UIFont boldSystemFontOfSize:18];
         
         sub_title = [[UILabel alloc] init];
         sub_title.text = [NSString stringWithFormat:@"By: %@", news_letter.article_provider_name];
+        sub_title.textColor = [UIColor grayColor];
         sub_title.lineBreakMode = NSLineBreakByWordWrapping;
         sub_title.numberOfLines = 0;
         sub_title.font = [UIFont systemFontOfSize:13.0];
 
+        date_title = [[UILabel alloc] init];
+        date_title.textColor = [UIColor grayColor];
+        date_title.text = news_letter.content_date_time;
+        date_title.lineBreakMode = NSLineBreakByWordWrapping;
+        date_title.numberOfLines = 0;
+        date_title.font = [UIFont systemFontOfSize:13.0];
+
+        
+        
 
         [self addSubview:title];
         [self addSubview:sub_title];
+        [self addSubview:date_title];
         [self addSubview:top_title];
         [self addSubview:creator_image];
 
@@ -61,17 +79,16 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];
         [self addGestureRecognizer:singleFingerTap];
-
-        
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    creator_image.frame =  CGRectMake(16, 16, 50, 50);
+    creator_image.frame =  CGRectMake(16, 25, 50, 50);
     title.frame = CGRectMake(100, 16, self.frame.size.width - 100, 55);
     sub_title.frame = CGRectMake(100, 75, self.frame.size.width - 100, 15);
+    date_title.frame = CGRectMake(self.frame.size.width - 70, 75, 70, 15);
 }
 
 
