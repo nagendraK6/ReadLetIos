@@ -16,11 +16,16 @@
 @implementation GetStartedViewController
 {
     UILabel *_getStarted;
+    UILabel *app_name;
+    UILabel *title_name;
+    UILabel *description;
+
     UILabel *tc_line_1;
     UILabel *tc_line_2;
     UILabel *tc_line_3;
     
     UIImageView *_centerLogo;
+    UIImageView *_start_reading;
 }
 
 - (void)viewDidLoad {
@@ -31,6 +36,40 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
+        app_name = [[UILabel alloc] init];
+        app_name.text = @"Readlet";
+        app_name.textAlignment = NSTextAlignmentCenter;
+        app_name.font = [UIFont boldSystemFontOfSize:36];
+        app_name.textColor = [UIColor colorWithRed:74.0f/255.0f
+                                          green:74.0f/255.0f
+                                           blue:74.0f/255.0f
+                                          alpha:1.0f];
+        
+
+        title_name = [[UILabel alloc] init];
+        title_name.text = @"Your information diet";
+        title_name.textAlignment = NSTextAlignmentCenter;
+        title_name.font = [UIFont boldSystemFontOfSize:18];
+        title_name.textColor = [UIColor colorWithRed:74.0f/255.0f
+                                             green:74.0f/255.0f
+                                              blue:74.0f/255.0f
+                                             alpha:1.0f];
+
+        
+        
+        description = [[UILabel alloc] init];
+        description.text = @"Readlet’s curated newsletters help you make sense of the news  around you";
+        description.textAlignment = NSTextAlignmentCenter;
+        description.font = [UIFont boldSystemFontOfSize:18];
+        description.textColor = [UIColor colorWithRed:79.0f/255.0f
+                                               green:111.0f/255.0f
+                                                blue:13.0f/255.0f
+                                               alpha:1.0f];
+        
+        description.lineBreakMode = NSLineBreakByWordWrapping;
+        description.numberOfLines = 0;
+
+        
         _getStarted = [[UILabel alloc] init];
         _getStarted.text = @"Start Reading";
         _getStarted.textAlignment = NSTextAlignmentCenter;
@@ -43,11 +82,17 @@
         
         _getStarted.userInteractionEnabled = YES;
         
+        
+        _start_reading = [[UIImageView alloc] init];
+        _start_reading.image = [UIImage imageNamed:@"startreading"];
+        _start_reading.userInteractionEnabled = YES;
+
         UITapGestureRecognizer *tapGesture = \
         [[UITapGestureRecognizer alloc]
          initWithTarget:self action:@selector(didTapLabelWithGesture:)];
         [_getStarted addGestureRecognizer:tapGesture];
-        
+        [_start_reading addGestureRecognizer:tapGesture];
+
         
         tc_line_1 = [[UILabel alloc] init];
         tc_line_2 = [[UILabel alloc] init];
@@ -73,7 +118,7 @@
         
         tc_line_1.text = @"By clicking on Get Started button, you agree";
         
-        NSMutableAttributedString *attributedString_1 = [[NSMutableAttributedString alloc] initWithString:@"to the Reel's terms and conditions and" attributes:nil];
+        NSMutableAttributedString *attributedString_1 = [[NSMutableAttributedString alloc] initWithString:@"to the Readlet's terms and conditions and" attributes:nil];
         NSRange linkRange_1 = NSMakeRange(14, 20); // for the word "link" in the string above
         
         NSDictionary *linkAttributes = @{ NSForegroundColorAttributeName : [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0],
@@ -105,7 +150,10 @@
         [self.view addSubview:tc_line_1];
         [self.view addSubview:tc_line_2];
         [self.view addSubview:tc_line_3];
-        [self.view addSubview:_getStarted];
+        [self.view addSubview:_start_reading];
+        [self.view addSubview:app_name];
+        [self.view addSubview:title_name];
+        [self.view addSubview:description];
     }
     
     return self;
@@ -143,13 +191,17 @@
 }
 
 - (void) viewWillLayoutSubviews {
-    _centerLogo.frame = CGRectMake(self.view.frame.size.width /2 -125, self.view.frame.size.height /2 - 200 ,250,200);
+    _centerLogo.frame = CGRectMake(self.view.frame.size.width /2 - 90, 100 ,180,180);
+    app_name.frame = CGRectMake(0, 290 ,self.view.frame.size.width  ,50);
+    title_name.frame = CGRectMake(0, 330 ,self.view.frame.size.width  ,30);
+    description.frame = CGRectMake(self.view.frame.size.width / 2 - 135, 450 ,270  ,100);
     
-    tc_line_1.frame = CGRectMake(0 ,self.view.frame.size.height / 2 + 50 ,self.view.frame.size.width,10);
-    tc_line_2.frame = CGRectMake(0 ,self.view.frame.size.height / 2 + 60,self.view.frame.size.width,10);
-    tc_line_3.frame = CGRectMake(0 ,self.view.frame.size.height / 2 + 70,self.view.frame.size.width,10);
     
-    _getStarted.frame = CGRectMake(self.view.frame.size.width /2 - 100,self.view.frame.size.height / 2 + 100 ,200,60);
+    tc_line_1.frame = CGRectMake(0 ,self.view.frame.size.height  - 140 ,self.view.frame.size.width,10);
+    tc_line_2.frame = CGRectMake(0 ,self.view.frame.size.height -125 ,self.view.frame.size.width,10);
+    tc_line_3.frame = CGRectMake(0 ,self.view.frame.size.height -110,self.view.frame.size.width,10);
+    
+    _start_reading.frame = CGRectMake(self.view.frame.size.width /2 - 150,self.view.frame.size.height - 200 ,300,48);
 }
 
 @end

@@ -24,6 +24,8 @@
 		85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */; };
 		85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDF228E63EC00B1F06D /* Provider.m */; };
 		85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */; };
+		85C535652294743A00BA9899 /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C535642294743A00BA9899 /* APPChildViewController.m */; };
+		85C535682294747700BA9899 /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C535672294747700BA9899 /* APPViewController.m */; };
 		85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99B228E2A26000216C5 /* GetStartedViewController.m */; };
 		85DFF99F228E2FD0000216C5 /* PhoneNoAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */; };
 		85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF9A1228E3066000216C5 /* OTPVerificationViewController.m */; };
@@ -83,6 +85,10 @@
 		85B1DEDF228E63EC00B1F06D /* Provider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
 		85B1DEE1228E64FF00B1F06D /* ProviderElementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderElementView.h; sourceTree = "<group>"; };
 		85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderElementView.m; sourceTree = "<group>"; };
+		85C535632294743A00BA9899 /* APPChildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = "<group>"; };
+		85C535642294743A00BA9899 /* APPChildViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = "<group>"; };
+		85C535662294747700BA9899 /* APPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPViewController.h; sourceTree = "<group>"; };
+		85C535672294747700BA9899 /* APPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPViewController.m; sourceTree = "<group>"; };
 		85DFF99A228E2A26000216C5 /* GetStartedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetStartedViewController.h; sourceTree = "<group>"; };
 		85DFF99B228E2A26000216C5 /* GetStartedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetStartedViewController.m; sourceTree = "<group>"; };
 		85DFF99D228E2FD0000216C5 /* PhoneNoAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNoAskViewController.h; sourceTree = "<group>"; };
@@ -227,6 +233,10 @@
 				85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */,
 				85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */,
 				85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */,
+				85C535632294743A00BA9899 /* APPChildViewController.h */,
+				85C535642294743A00BA9899 /* APPChildViewController.m */,
+				85C535662294747700BA9899 /* APPViewController.h */,
+				85C535672294747700BA9899 /* APPViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -463,11 +473,13 @@
 				85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
+				85C535652294743A00BA9899 /* APPChildViewController.m in Sources */,
 				853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */,
 				85DFF99F228E2FD0000216C5 /* PhoneNoAskViewController.m in Sources */,
 				8531368122812367009EB0D2 /* ViewController.m in Sources */,
 				853136B12281241E009EB0D2 /* MainScreenViewController.m in Sources */,
 				853136B522812471009EB0D2 /* NewsLetter.m in Sources */,
+				85C535682294747700BA9899 /* APPViewController.m in Sources */,
 				850942662291A7A4004A7B4C /* HeaderView.m in Sources */,
 				85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */,
 				8531368C22812368009EB0D2 /* main.m in Sources */,
