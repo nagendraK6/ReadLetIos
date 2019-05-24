@@ -8,48 +8,61 @@
 
 #import "APPViewController.h"
 #import "APPChildViewController.h"
+#import "PhoneNoAskViewController.h"
+@interface APPViewController () 
 
-@interface APPViewController ()
+{
+    UIImageView *_start_reading;
+    UILabel *tc_line_1;
+    UILabel *tc_line_2;
+    UILabel *tc_line_3;
 
+}
 @end
 
 @implementation APPViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _start_reading = [[UIImageView alloc] init];
+        _start_reading.image = [UIImage imageNamed:@"startreading"];
+        _start_reading.userInteractionEnabled = YES;
+        [self setupviews];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:[[self view] bounds]];
+    //    [[self.pageController view] setFrame:[[self view] bounds]];
+    self.pageController.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), self.view.frame.size.height - 200);
     
     APPChildViewController *initialViewController = [self viewControllerAtIndex:0];
     
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    /*
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pageController setViewControllers:viewControllers
-                                          direction:UIPageViewControllerNavigationDirectionReverse
-                                           animated:YES completion:nil];
-    });
-    */
+    
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
+    
+    _start_reading.frame = CGRectMake(self.view.frame.size.width /2 - 150,self.view.frame.size.height - 200 ,300,48);
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (APPChildViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+    APPChildViewController *childViewController = [[APPChildViewController alloc] init];
+    childViewController.index = index;
+    
+    return childViewController;
 }
-*/
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
@@ -62,6 +75,7 @@
     index--;
     
     return [self viewControllerAtIndex:index];
+    
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
@@ -71,29 +85,128 @@
     
     index++;
     
-    if (index == 5) {
+    if (index == 3) {
         return nil;
     }
     
     return [self viewControllerAtIndex:index];
 }
 
-- (APPChildViewController *)viewControllerAtIndex:(NSUInteger)index {
-    
-    APPChildViewController *childViewController = [[APPChildViewController alloc] initWithNibName:@"APPChildViewController" bundle:nil];
-    childViewController.index = index;
-    
-    return childViewController;
-}
-
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return 5;
+    return 3;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
     // The selected item reflected in the page indicator.
     return 0;
+}
+
+- (void) viewWillLayoutSubviews {
+    tc_line_1.frame = CGRectMake(0 ,self.view.frame.size.height  - 140 ,self.view.frame.size.width,10);
+    tc_line_2.frame = CGRectMake(0 ,self.view.frame.size.height -125 ,self.view.frame.size.width,10);
+    tc_line_3.frame = CGRectMake(0 ,self.view.frame.size.height -110,self.view.frame.size.width,10);
+    
+    _start_reading.frame = CGRectMake(self.view.frame.size.width /2 - 150,self.view.frame.size.height - 200 ,300,48);
+}
+
+- (void) setupviews {
+    _start_reading = [[UIImageView alloc] init];
+    _start_reading.image = [UIImage imageNamed:@"startreading"];
+    _start_reading.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = \
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self action:@selector(didTapLabelWithGesture:)];
+    [_start_reading addGestureRecognizer:tapGesture];
+    
+    
+    tc_line_1 = [[UILabel alloc] init];
+    tc_line_2 = [[UILabel alloc] init];
+    tc_line_3 = [[UILabel alloc] init];
+    
+    
+    tc_line_2.userInteractionEnabled = YES;
+    tc_line_3.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture_2 = \
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self action:@selector(didTapLabelWithGesture_2:)];
+    [tc_line_2 addGestureRecognizer:tapGesture_2];
+    
+    UITapGestureRecognizer *tapGesture_3 = \
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self action:@selector(didTapLabelWithGesture_3:)];
+    [tc_line_3 addGestureRecognizer:tapGesture_3];
+    
+    
+    
+    
+    tc_line_1.text = @"By clicking on Get Started button, you agree";
+    
+    NSMutableAttributedString *attributedString_1 = [[NSMutableAttributedString alloc] initWithString:@"to the Readlet's terms and conditions and" attributes:nil];
+    NSRange linkRange_1 = NSMakeRange(14, 20); // for the word "link" in the string above
+    
+    NSDictionary *linkAttributes = @{ NSForegroundColorAttributeName : [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0],
+                                      NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle) };
+    [attributedString_1 setAttributes:linkAttributes range:linkRange_1];
+    
+    // Assign attributedText to UILabel
+    NSMutableAttributedString *attributedString_2 = [[NSMutableAttributedString alloc] initWithString:@"Privacy Policy" attributes:nil];
+    
+    
+    NSRange linkRange_2 = NSMakeRange(0, 14); // for the word "link" in the string above
+    
+    [attributedString_2 setAttributes:linkAttributes range:linkRange_2];
+    
+    
+    tc_line_2.attributedText = attributedString_1;
+    tc_line_3.attributedText = attributedString_2;
+    
+    
+    tc_line_1.textAlignment = NSTextAlignmentCenter;
+    tc_line_2.textAlignment = NSTextAlignmentCenter;
+    tc_line_3.textAlignment = NSTextAlignmentCenter;
+    
+    tc_line_1.font = [UIFont systemFontOfSize:10];
+    tc_line_2.font = [UIFont systemFontOfSize:10];
+    tc_line_3.font = [UIFont systemFontOfSize:10];
+    
+    [self.view addSubview:tc_line_1];
+    [self.view addSubview:tc_line_2];
+    [self.view addSubview:tc_line_3];
+    [self.view addSubview:_start_reading];
+}
+
+- (void)didTapLabelWithGesture:(UITapGestureRecognizer *)tapGesture {
+    // [LoggingHelper reportLogsDataToAnalytics:CLICKED_GET_STARTED];
+    CATransition *transition = [[CATransition alloc] init];
+    transition.duration = 0.5;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [self.view.window.layer addAnimation:transition forKey:kCATransition];
+    PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
+    
+    
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:navigation animated:YES completion:^{
+        NSLog(@"Completed");
+    }];
+    
+    //  [self presentViewController:vc animated:YES completion:nil];
+}
+
+
+
+
+
+- (void)didTapLabelWithGesture_2:(UITapGestureRecognizer *)tapGesture {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rely.ai/tc.html"]];
+}
+
+- (void)didTapLabelWithGesture_3:(UITapGestureRecognizer *)tapGesture {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rely.ai/privacy.html"]];
 }
 
 @end

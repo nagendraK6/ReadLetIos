@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) NSInteger index;
 
-@property (strong, nonatomic) UILabel *screenNumber;
-
 @end
 
 NS_ASSUME_NONNULL_END

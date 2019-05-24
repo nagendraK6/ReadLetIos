@@ -10,6 +10,7 @@
 #import "MainScreenViewController.h"
 #import "GetStartedViewController.h"
 #import "SubscribeNewsletterViewController.h"
+#import "APPViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    UIPageControl *pageControl = [UIPageControl appearance];
+        pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     
     UIViewController *vc;
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
@@ -35,7 +39,7 @@
         if (user_token != nil) {
             NSObject *has_subscribed = [user_info objectForKey:@"has_subscribed"];
             if (has_subscribed != nil) {
-                vc = [[MainScreenViewController alloc] init];
+                vc = [[APPViewController alloc] init];
             } else {
                 vc = [[GetStartedViewController alloc] init];
             }
