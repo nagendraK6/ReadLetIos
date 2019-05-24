@@ -59,7 +59,7 @@
         
         
         _collectionView.frame = CGRectMake(0 , 100 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
-        manage.frame = CGRectMake(16 , 54   ,20 ,20);
+        manage.frame = CGRectMake(16 , 55   ,20 ,20);
         settings.frame = CGRectMake(self.view.bounds.size.width - 48 , 50   ,24 ,24);
         header.frame = CGRectMake(0 , 50   ,self.view.bounds.size.width  ,30);
 
