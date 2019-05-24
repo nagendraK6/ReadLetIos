@@ -116,7 +116,7 @@
         _centerLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"getstarted"]];
         
         
-        tc_line_1.text = @"By clicking on Get Started button, you agree";
+        tc_line_1.text = @"By clicking on Start Reading button, you agree";
         
         NSMutableAttributedString *attributedString_1 = [[NSMutableAttributedString alloc] initWithString:@"to the Readlet's terms and conditions and" attributes:nil];
         NSRange linkRange_1 = NSMakeRange(14, 20); // for the word "link" in the string above
