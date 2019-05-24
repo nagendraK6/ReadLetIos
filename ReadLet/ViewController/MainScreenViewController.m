@@ -91,8 +91,11 @@
     
     
     
+    UIBarButtonItem *save_button = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:(UIBarButtonItemStyleDone) target:self action:@selector(cancelButtonAction:)];
     vc.navigationItem.leftBarButtonItem = doneButton;
+    vc.navigationItem.title = @"Update subscriptions";
+    vc.navigationItem.rightBarButtonItem=save_button;
 
     
     
