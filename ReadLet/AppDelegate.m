@@ -39,15 +39,15 @@
         if (user_token != nil) {
             NSObject *has_subscribed = [user_info objectForKey:@"has_subscribed"];
             if (has_subscribed != nil) {
-                vc = [[APPViewController alloc] init];
+                vc = [[MainScreenViewController alloc] init];
             } else {
-                vc = [[GetStartedViewController alloc] init];
+                vc = [[APPViewController alloc] init];
             }
         } else {
-            vc = [[GetStartedViewController alloc] init];
+            vc = [[APPViewController alloc] init];
         }
     } else {
-        vc = [[GetStartedViewController alloc] init];
+        vc = [[APPViewController alloc] init];
         NSLog(@"Load the phone registration view");
     }
     

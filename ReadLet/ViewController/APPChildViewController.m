@@ -117,7 +117,7 @@
     _centerLogo.frame = CGRectMake(self.view.frame.size.width /2 - 90, 100 ,180,180);
     app_name.frame = CGRectMake(0, 290 ,self.view.frame.size.width  ,50);
     title_name.frame = CGRectMake(0, 330 ,self.view.frame.size.width  ,30);
-    description.frame = CGRectMake(self.view.frame.size.width / 2 - 135, 450 ,270  ,100);
+    description.frame = CGRectMake(self.view.frame.size.width / 2 - 135, 400 ,270  ,100);
 }
 
 
@@ -134,7 +134,7 @@
     [_centerLogo setHidden:YES];
     screen_1_2_img.image = [UIImage imageNamed:@"sc2"];
     screen_1_2_img.frame = CGRectMake(self.view.frame.size.width /2 - 125, 100 ,250,250);
-    screen_1_2_text.frame = CGRectMake(self.view.frame.size.width / 2 - 175, 450 ,350  ,100);
+    screen_1_2_text.frame = CGRectMake(self.view.frame.size.width / 2 - 175, 400 ,350  ,100);
     
     
     screen_1_2_text.text = @"Subscribe to what the most influential in your industry are reading and writing";
@@ -156,7 +156,7 @@
     [_centerLogo setHidden:YES];
     screen_1_2_img.image = [UIImage imageNamed:@"sc3"];
     screen_1_2_img.frame = CGRectMake(self.view.frame.size.width /2 - 125, 100 ,250,250);
-    screen_1_2_text.frame = CGRectMake(self.view.frame.size.width / 2 - 135, 450 ,270  ,100);
+    screen_1_2_text.frame = CGRectMake(self.view.frame.size.width / 2 - 135, 400 ,270  ,100);
     
     screen_1_2_text.text = @"Read all in one place and keep your email clutter free";
     screen_1_2_text.textAlignment = NSTextAlignmentCenter;
