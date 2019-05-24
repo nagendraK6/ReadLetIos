@@ -33,13 +33,13 @@
         title = [[UILabel alloc] init];
         title.text = @"Readlet";
         title.textAlignment = NSTextAlignmentCenter;
-        title.font = [UIFont boldSystemFontOfSize:36];
+        title.font = [UIFont boldSystemFontOfSize:24];
         title.textColor = [UIColor colorWithRed:74.0f/255.0f
                                           green:74.0f/255.0f
                                            blue:74.0f/255.0f
                                           alpha:1.0f];
         
-        [self addSubview:headerimage];
+        //[self addSubview:headerimage];
         [self addSubview:title];
     }
     return self;
