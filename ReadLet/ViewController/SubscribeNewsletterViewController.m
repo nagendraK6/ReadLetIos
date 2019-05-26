@@ -12,9 +12,11 @@
 #import "ProviderElementView.h"
 #import "Constants.h"
 #import "AFNetworking.h"
-
+#import "PhoneNoAskViewController.h"
 @interface SubscribeNewsletterViewController ()
-
+{
+    BOOL init_standalone;
+}
 @end
 
 @implementation SubscribeNewsletterViewController
@@ -22,12 +24,14 @@
     UICollectionView *_collectionView;
     NSMutableArray *all_providers;
     NSMutableArray *selected_provider_ids;
+    UILabel *title;
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"view did load");
+    title.frame = CGRectMake(0, 5, self.view.frame.size.width, 20);
     // Do any additional setup after loading the view.
 }
 
@@ -37,40 +41,70 @@
         [self showAlert];
     } else {
         // send to server for subscribing the newsletter and open main screen
-        [self sendToServer];
+        if (init_standalone == NO) {
+            [self sendToServer];
+        } else {
+            // open phone number flow
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *user_info = [defaults objectForKey:@"user_info"];
+            NSMutableDictionary *updated_object = [[NSMutableDictionary alloc] initWithDictionary:user_info];
+            [updated_object setObject:selected_provider_ids forKey:@"selected_provider_ids"];
+            [defaults setObject:updated_object forKey:@"user_info"];
+            
+            [self openRegFlow];
+        }
     }
 }
+
+- (instancetype) initWithoutFetch
+{
+    self = [super init];
+    if (self) {
+        init_standalone = YES;
+        [self setup];
+        [self fetchData:NO];
+    }
+    return self;
+}
+
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        all_providers = [[NSMutableArray alloc] init];
-        selected_provider_ids = [[NSMutableArray alloc] init];
-        
-        UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
-        [layout setMinimumLineSpacing:10.0f];
-        _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-        _collectionView.frame = CGRectMake(0 , 80 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
-        
-        
-        [_collectionView setDataSource:self];
-        [_collectionView setDelegate:self];
-        
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-        [_collectionView setBackgroundColor:[UIColor whiteColor]];
-        
-        [self.view addSubview:_collectionView];
-        
-        UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
-        self.navigationItem.rightBarButtonItem=next_button;
-        self.navigationItem.title = @"Subscribe Newsletters";
-
-        
-        [self fetchData];
-        
+        init_standalone = NO;
+        [self setup];
+        [self fetchData:YES];
     }
     return self;
+}
+
+- (void) setup {
+    all_providers = [[NSMutableArray alloc] init];
+    selected_provider_ids = [[NSMutableArray alloc] init];
+    
+    UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
+    [layout setMinimumLineSpacing:10.0f];
+    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    _collectionView.frame = CGRectMake(0 , 100 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
+    
+    
+    [_collectionView setDataSource:self];
+    [_collectionView setDelegate:self];
+    
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+    [_collectionView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.view addSubview:_collectionView];
+    
+    UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
+    self.navigationItem.rightBarButtonItem=next_button;
+    self.navigationItem.title = @"Step 1 of 4";
+    
+    title = [[UILabel alloc] init];
+    title.text = @"Select newsletters from below";
+    [self.view addSubview:title];
 }
 
 /*
@@ -115,7 +149,7 @@
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    float cellWidth = screenWidth / 2; //Replace the divisor with the column count requirement. Make sure to have it in float.
+    float cellWidth = screenWidth / 3; //Replace the divisor with the column count requirement. Make sure to have it in float.
     //CGFloat screenHeight = screenRect.size.height;
     //float cellHeight = screenHeight/3.0;
     
@@ -135,23 +169,29 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) fetchData {
-    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"newsletters/providers"];
+- (void) fetchData:(BOOL) has_token {
+    AFHTTPSessionManager *manager;
+    NSString *urlstring;
+    if (has_token == YES) {
+        urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"newsletters/providers"];
+        NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+        NSDictionary *user_info = [data objectForKey:@"user_info"];
+        NSString *user_token = [user_info objectForKey:@"user_token"];
+        manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", user_token] forHTTPHeaderField:@"Authorization"];
+    } else {
+        urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"newsletters/providers_list"];
+        
+        
+        manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    }
+    
     NSURL *URL = [NSURL URLWithString:urlstring];
-    
-    
-    
-    
-    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
-    NSDictionary *user_info = [data objectForKey:@"user_info"];
-    NSString *user_token = [user_info objectForKey:@"user_token"];
-    
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", user_token] forHTTPHeaderField:@"Authorization"];
-    
+
     [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSArray *message_data = (NSArray *)responseObject;
         NSMutableArray *all_providers_data = [[NSMutableArray alloc] init];
@@ -215,8 +255,6 @@
 
 
 - (void) sendToServer {
-    
-    
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
     NSDictionary *user_info = [data objectForKey:@"user_info"];
     NSString *user_token = [user_info objectForKey:@"user_token"];
@@ -254,6 +292,22 @@
     }];
 }
 
+
+- (void) openRegFlow {
+    CATransition *transition = [[CATransition alloc] init];
+    transition.duration = 0.5;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [self.view.window.layer addAnimation:transition forKey:kCATransition];
+    PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
+    
+    
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:navigation animated:YES completion:^{
+        NSLog(@"Completed");
+    }];
+}
 
 
 @end

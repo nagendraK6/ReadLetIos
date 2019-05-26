@@ -12,6 +12,7 @@
 #import "PhoneNoAskViewController.h"
 #import "SubscribeNewsletterViewController.h"
 
+#import "AFNetworking.h"
 
 @interface NameAddRegistrationViewController ()
 
@@ -22,7 +23,6 @@
     UILabel *name_description;
     UILabel *first_name_description;
     UILabel *last_name_description;
-    UILabel *next_button;
     UITextField *first_name;
     UITextField *last_name;
     UIActivityIndicatorView *_activityIndicator;
@@ -53,24 +53,6 @@
         first_name = [[UITextField alloc] init];
         last_name = [[UITextField alloc] init];
         
-        next_button = [[UILabel alloc] init];
-        next_button.text = @"Next";
-        next_button.textAlignment = NSTextAlignmentCenter;
-        next_button.textColor = [UIColor whiteColor];
-        
-        next_button.layer.borderWidth = 1.0;
-        next_button.layer.cornerRadius = 20;
-        next_button.layer.masksToBounds = true;
-        next_button.userInteractionEnabled = NO;
-        next_button.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        next_button.backgroundColor = [UIColor lightGrayColor];
-        
-        
-        UITapGestureRecognizer *tapGesture = \
-        [[UITapGestureRecognizer alloc]
-         initWithTarget:self action:@selector(didTapLabelWithGesture:)];
-        [next_button addGestureRecognizer:tapGesture];
-        
         first_name.delegate = self;
         last_name.delegate = self;
         
@@ -79,24 +61,28 @@
         [self.view addSubview:last_name_description];
         [self.view addSubview:first_name];
         [self.view addSubview:last_name];
-        [self.view addSubview:next_button];
         
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.width/2)];
         [self.view addSubview:_activityIndicator];
         
+        self.navigationItem.title = @"Step 4 of 4";
+        
+        UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
+        next_button.tintColor = [UIColor lightGrayColor];
+        self.navigationItem.rightBarButtonItem=next_button;
+
+        
     }
     return self;
 }
 
-- (void)didTapLabelWithGesture:(UITapGestureRecognizer *)tapGesture {
+-(void)rightBtnClick{
     NSLog(@"Next clicked");
    // [LoggingHelper reportLogsDataToAnalytics:CLICKED_NAME_SEND];
     [last_name resignFirstResponder];
     [first_name resignFirstResponder];
     [_activityIndicator startAnimating];
-    [next_button setUserInteractionEnabled:NO];
-    [next_button setHidden:YES];
     
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
     NSDictionary *user_info = [data objectForKey:@"user_info"];
@@ -115,13 +101,13 @@
 }
 
 - (void) viewWillLayoutSubviews {
-    name_description.frame = CGRectMake(self.view.frame.size.width /2 - 150, 50,300, 30);
-    first_name_description.frame = CGRectMake(30, 100,100, 30);
-    first_name.frame = CGRectMake(30, 130,200, 30);
-    last_name_description.frame = CGRectMake(30, 170,100, 30);
-    last_name.frame = CGRectMake(30, 200,200, 30);
     
-    next_button.frame = CGRectMake(self.view.frame.size.width /2 - 75, 250,150, 40);
+    name_description.frame = CGRectMake(self.view.frame.size.width /2 - 150, self.view.frame.size.height /2 - 200 ,300, 30);
+    first_name_description.frame = CGRectMake(30, self.view.frame.size.height /2 - 150,100, 30);
+    first_name.frame = CGRectMake(30, self.view.frame.size.height /2 - 130,200, 30);
+    last_name_description.frame = CGRectMake(30, self.view.frame.size.height /2 - 100,100, 30);
+    last_name.frame = CGRectMake(30, self.view.frame.size.height /2 - 80 ,200, 30);
+    
     
     CALayer *border = [CALayer layer];
     CGFloat borderWidth = 1;
@@ -158,89 +144,51 @@
   //  [LoggingHelper reportLogsDataToAnalytics:TYPING_NAME];
     if (textField == first_name) {
         if (![first_name.text  isEqual: @""]) {
-            next_button.userInteractionEnabled = YES;
-            next_button.layer.borderColor = [UIColor colorWithRed:0.00 green:0.55 blue:1.00 alpha:1.0].CGColor;
-            next_button.backgroundColor = [UIColor colorWithRed:0.00 green:0.55 blue:1.00 alpha:1.0];
+            self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.00 green:0.55 blue:1.00 alpha:1.0];
         } else {
-        //    [LoggingHelper reportLogsDataToAnalytics:NAME_SEND_BUTTON_ENABLED];
-            next_button.userInteractionEnabled = NO;
-            next_button.layer.borderColor = [UIColor lightGrayColor].CGColor;
-            next_button.backgroundColor = [UIColor lightGrayColor];
+            self.navigationItem.rightBarButtonItem.tintColor = [UIColor lightGrayColor];
         }
     }
 }
 
 - (void) sendNameToServer:(NSString *)first_name last_name:(NSString *)last_name user_token:(NSString *)token {
+    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+    NSDictionary *user_info = [data objectForKey:@"user_info"];
+    NSArray *selected_provider_ids = [user_info objectForKey:@"selected_provider_ids"];
     
-    NSString *address =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/user_name_send"];
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:address]];
-    NSString *userUpdate =[NSString stringWithFormat:@"first_name=%@&last_name=%@", first_name, last_name];
     
-    //create the Method "GET" or "POST"
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setValue:[NSString stringWithFormat:@"Token %@", token] forHTTPHeaderField:@"Authorization"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", token] forHTTPHeaderField:@"Authorization"];
     
-    //Convert the String to Data
-    NSData *data = [userUpdate dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/user_name_send"];
     
-    //Apply the data to the body
-    [urlRequest setHTTPBody:data];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-       // [LoggingHelper reportLogsDataToAnalytics:NAME_SEND_SERVER_SUCCESS];
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if(httpResponse.statusCode == 401) {
-            // unauthorized token...redirect to phone no ask view controller
-            PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
-            [self presentViewController:vc animated:YES completion:nil];
-        }
+    NSDictionary *params = @{
+                             @"provider_ids": selected_provider_ids,
+                             @"first_name" : first_name,
+                             @"last_name": last_name
+                             };
+    
+    
+    
+    [manager POST:urlstring parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
-        if(httpResponse.statusCode == 200)
-        {
-            NSError *parseError = nil;
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            NSString *error_message = [responseDictionary objectForKey:@"error_message"];
-            if([error_message  isEqual: @"SUCCESS"]) {
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                NSDictionary *user_info = [defaults objectForKey:@"user_info"];
-                NSMutableDictionary *updated_object = [[NSMutableDictionary alloc] initWithDictionary:user_info];
-                
-                [updated_object setObject:first_name forKey:@"first_name"];
-                [updated_object setObject:last_name forKey:@"last_name"];
-                
-                [defaults setObject:updated_object forKey:@"user_info"];
-                NSLog(@"Name added successfully");
-                
-                // store the user token and ither information in user_info
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    CATransition *transition = [[CATransition alloc] init];
-                    transition.duration = 1.0;
-                    transition.type = kCATransitionPush;
-                    transition.subtype = kCATransitionFromRight;
-                    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-                    [self.view.window.layer addAnimation:transition forKey:kCATransition];
-                    
-                    SubscribeNewsletterViewController *vc = [[SubscribeNewsletterViewController alloc] init];
-                    
-                    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
-                    [self presentViewController:navigation animated:YES completion:^{
-                        NSLog(@"Completed");
-                    }];
-                });
-            }
-            else
-            {
-                NSLog(@"Name add failed");
-            }
-        }
-        else
-        {
-            //[LoggingHelper reportLogsDataToAnalytics:NAME_SEND_SERVER_FAILED];
-            NSLog(@"http response is not 200");
-        }
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *user_info = [defaults objectForKey:@"user_info"];
+        NSMutableDictionary *updated_object = [[NSMutableDictionary alloc] initWithDictionary:user_info];
+        
+        [updated_object setObject:@YES forKey:@"has_subscribed"];
+        [defaults setObject:updated_object forKey:@"user_info"];
+        
+        
+        MainScreenViewController *vc = [[MainScreenViewController alloc] init];
+        [self presentViewController:vc animated:YES completion:nil];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        //[LoggingHelper reportLogsDataToAnalytics:PHONE_SEND_SERVER_FAILED];
+        NSLog(@"Error: %@", error);
     }];
-    [dataTask resume];
 }
 
 

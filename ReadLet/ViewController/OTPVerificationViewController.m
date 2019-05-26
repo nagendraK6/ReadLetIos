@@ -136,6 +136,8 @@
         [next_button addGestureRecognizer:tapGesture];
         
         [self.view addSubview:next_button];
+        
+        self.navigationItem.title = @"Step 3 of 4";
     }
     
     [self startANewTimer];
@@ -348,12 +350,34 @@
                     [self->_otp_in_progress setHidden:YES];
                     [self->_activityIndicator stopAnimating];
                     if (skip_reg == YES) {
+                        
+                        
+                        
+                        CATransition *transition = [[CATransition alloc] init];
+                        transition.duration = 0.5;
+                        transition.type = kCATransitionPush;
+                        transition.subtype = kCATransitionFromRight;
+                        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+                        [self.view.window.layer addAnimation:transition forKey:kCATransition];
                         NameAddRegistrationViewController *vc = [[NameAddRegistrationViewController alloc] init];
-                        [self presentViewController:vc animated:YES completion:nil];
+                        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+                        [self presentViewController:navigation animated:YES completion:^{
+                            NSLog(@"Completed");
+                        }];
+                        
                         
                     } else {
+                        CATransition *transition = [[CATransition alloc] init];
+                        transition.duration = 0.5;
+                        transition.type = kCATransitionPush;
+                        transition.subtype = kCATransitionFromRight;
+                        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+                        [self.view.window.layer addAnimation:transition forKey:kCATransition];
                         NameAddRegistrationViewController *vc = [[NameAddRegistrationViewController alloc] init];
-                        [self presentViewController:vc animated:YES completion:nil];
+                        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+                        [self presentViewController:navigation animated:YES completion:^{
+                            NSLog(@"Completed");
+                        }];
                     }
                 });
             }

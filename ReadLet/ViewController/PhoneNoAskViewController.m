@@ -68,6 +68,8 @@
         [self.view addSubview:_phone_ask_description];
         [self.view addSubview:_phone_title_description];
         [self.view addSubview:reason_ask];
+        
+        self.navigationItem.title = @"Step 2 of 4";
     }
     
     return self;
@@ -188,8 +190,12 @@
         NSLog(@"The response is - %@",responseDictionary);
         NSString *error_message = [responseDictionary objectForKey:@"error_message"];
         if([error_message  isEqual: @"SUCCESS"]) {
-            NSMutableDictionary *user_info = [[NSMutableDictionary alloc] init];
+            NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+            NSDictionary *old_info = [data objectForKey:@"user_info"];
+
             
+            NSMutableDictionary *user_info = [[NSMutableDictionary alloc] initWithDictionary:old_info];
+
             [user_info setObject:[NSNumber numberWithBool:NO] forKey:@"is_otp_verified"];
             [user_info setObject:[responseDictionary objectForKey:@"user_id"] forKey:@"user_id"];
             [user_info setObject:decimalString forKey:@"phone_no"];
@@ -210,7 +216,10 @@
                 [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
                 [self.view.window.layer addAnimation:transition forKey:kCATransition];
                 OTPVerificationViewController *vc = [[OTPVerificationViewController alloc] init];
-                [self presentViewController:vc animated:YES completion:nil];
+                UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+                [self presentViewController:navigation animated:YES completion:^{
+                    NSLog(@"Completed");
+                }];
             });
         }
         else

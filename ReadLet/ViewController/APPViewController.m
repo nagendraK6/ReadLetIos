@@ -8,7 +8,9 @@
 
 #import "APPViewController.h"
 #import "APPChildViewController.h"
-#import "PhoneNoAskViewController.h"
+#import "SubscribeNewsletterViewController.h"
+#import "NameAddRegistrationViewController.h"
+
 @interface APPViewController () 
 
 {
@@ -186,7 +188,7 @@
     transition.subtype = kCATransitionFromRight;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [self.view.window.layer addAnimation:transition forKey:kCATransition];
-    PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
+    SubscribeNewsletterViewController *vc = [[SubscribeNewsletterViewController alloc] initWithoutFetch];
     
     
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];

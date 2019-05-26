@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SubscribeNewsletterViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, ProviderElementViewDelegate>
 
+- (id) initWithoutFetch;
+
 @end
 
 NS_ASSUME_NONNULL_END

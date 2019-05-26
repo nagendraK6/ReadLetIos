@@ -26,7 +26,6 @@
 		85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */; };
 		85C535652294743A00BA9899 /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C535642294743A00BA9899 /* APPChildViewController.m */; };
 		85C535682294747700BA9899 /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C535672294747700BA9899 /* APPViewController.m */; };
-		85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99B228E2A26000216C5 /* GetStartedViewController.m */; };
 		85DFF99F228E2FD0000216C5 /* PhoneNoAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */; };
 		85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DFF9A1228E3066000216C5 /* OTPVerificationViewController.m */; };
 		85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F4221922864803005C655E /* NewsElementProviderTitleView.m */; };
@@ -89,8 +88,6 @@
 		85C535642294743A00BA9899 /* APPChildViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = "<group>"; };
 		85C535662294747700BA9899 /* APPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPViewController.h; sourceTree = "<group>"; };
 		85C535672294747700BA9899 /* APPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPViewController.m; sourceTree = "<group>"; };
-		85DFF99A228E2A26000216C5 /* GetStartedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetStartedViewController.h; sourceTree = "<group>"; };
-		85DFF99B228E2A26000216C5 /* GetStartedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetStartedViewController.m; sourceTree = "<group>"; };
 		85DFF99D228E2FD0000216C5 /* PhoneNoAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNoAskViewController.h; sourceTree = "<group>"; };
 		85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNoAskViewController.m; sourceTree = "<group>"; };
 		85DFF9A0228E3066000216C5 /* OTPVerificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTPVerificationViewController.h; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 				853136B02281241E009EB0D2 /* MainScreenViewController.m */,
 				853136BA228136D9009EB0D2 /* ContentViewController.h */,
 				853136BB228136D9009EB0D2 /* ContentViewController.m */,
-				85DFF99A228E2A26000216C5 /* GetStartedViewController.h */,
-				85DFF99B228E2A26000216C5 /* GetStartedViewController.m */,
 				85DFF99D228E2FD0000216C5 /* PhoneNoAskViewController.h */,
 				85DFF99E228E2FD0000216C5 /* PhoneNoAskViewController.m */,
 				85DFF9A0228E3066000216C5 /* OTPVerificationViewController.h */,
@@ -470,7 +465,6 @@
 				85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */,
 				85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */,
 				85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */,
-				85DFF99C228E2A26000216C5 /* GetStartedViewController.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
 				85C535652294743A00BA9899 /* APPChildViewController.m in Sources */,

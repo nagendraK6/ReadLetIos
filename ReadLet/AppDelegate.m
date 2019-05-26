@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "MainScreenViewController.h"
-#import "GetStartedViewController.h"
 #import "SubscribeNewsletterViewController.h"
 #import "APPViewController.h"
+#import "NameAddRegistrationViewController.h"
 
 @interface AppDelegate ()
 
