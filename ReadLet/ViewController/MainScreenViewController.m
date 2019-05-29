@@ -150,14 +150,14 @@
     return CGSizeMake(self.view.bounds.size.width, 100);
 }
 
-- (void) onNewsLetterClick:(NSString *)url {
+- (void) onNewsLetterClick:(NSString *)url title:(NSString *)title {
     CATransition *transition = [[CATransition alloc] init];
     transition.duration = 1.0;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [self.view.window.layer addAnimation:transition forKey:kCATransition];
-    ContentViewController *vc = [[ContentViewController alloc] initWithURLString:url];
+    ContentViewController *vc = [[ContentViewController alloc] initWithURLString:url title:title];
     
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
 

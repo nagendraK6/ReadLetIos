@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContentViewController : UIViewController<WKNavigationDelegate>
 
-- (id) initWithURLString:(NSString *) url_link;
+- (id) initWithURLString:(NSString *) url_link title:(NSString *)title;
 
 @end
 

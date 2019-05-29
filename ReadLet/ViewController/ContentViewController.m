@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (id) initWithURLString:(NSString *) url_link {
+- (id) initWithURLString:(NSString *) url_link  title:(NSString *)title {
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
@@ -39,6 +39,7 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:(UIBarButtonItemStyleDone) target:self action:@selector(cancelButtonAction:)];
         self.navigationItem.leftBarButtonItem = doneButton;
         [LoggingHelper reportLogsDataToAnalytics:RENDER_WEBVIEW];
+        self.title = title;
     }
     return self;
 }

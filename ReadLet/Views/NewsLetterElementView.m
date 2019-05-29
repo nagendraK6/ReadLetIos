@@ -66,6 +66,7 @@
         date_title.lineBreakMode = NSLineBreakByWordWrapping;
         date_title.numberOfLines = 0;
         date_title.font = [UIFont systemFontOfSize:13.0];
+        date_title.textAlignment = NSTextAlignmentRight;
 
         
         
@@ -87,15 +88,15 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     creator_image.frame =  CGRectMake(16, 25, 50, 50);
-    title.frame = CGRectMake(100, 16, self.frame.size.width - 100, 55);
-    sub_title.frame = CGRectMake(100, 75, self.frame.size.width - 100, 15);
-    date_title.frame = CGRectMake(self.frame.size.width - 70, 75, 70, 15);
+    title.frame = CGRectMake(100, 16, self.frame.size.width - 116, 55);
+    sub_title.frame = CGRectMake(100, 75, self.frame.size.width - 116, 15);
+    date_title.frame = CGRectMake(100, 75, self.frame.size.width - 116, 15);
 }
 
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     [LoggingHelper reportLogsDataToAnalytics:TAP_ARTICLE];
-    [self.delegate onNewsLetterClick:elm.url_for_content];
+    [self.delegate onNewsLetterClick:elm.url_for_content title:elm.article_provider_name];
 }
 
 @end

@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @protocol NewsLetterElementViewDelegate <NSObject>
-- (void) onNewsLetterClick:(NSString *)url;
+- (void) onNewsLetterClick:(NSString *)url title:(NSString *)title;
 @end
 
 NS_ASSUME_NONNULL_END
