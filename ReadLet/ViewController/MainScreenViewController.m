@@ -24,7 +24,7 @@
     UICollectionView *_collectionView;
     NSMutableArray *all_news_letters_data;
     UIImageView *manage;
-    UIImageView *settings;
+    //UIImageView *settings;
     HeaderView *header;
 
 }
@@ -48,9 +48,10 @@
         
         all_news_letters_data = [[NSMutableArray alloc] init];
         manage = [[UIImageView alloc] init];
-        manage.image = [UIImage imageNamed:@"manage"];
-        settings = [[UIImageView alloc] init];
-        settings.image = [UIImage imageNamed:@"settings"];
+        //manage.image = [UIImage imageNamed:@"manage"];
+        manage.image = [UIImage imageNamed:@"settings"];
+        //settings = [[UIImageView alloc] init];
+        //settings.image = [UIImage imageNamed:@"settings"];
         header = [[HeaderView alloc] init];
 
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
@@ -59,8 +60,9 @@
         
         
         _collectionView.frame = CGRectMake(0 , 100 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
-        manage.frame = CGRectMake(16 , 55   ,20 ,20);
-        settings.frame = CGRectMake(self.view.bounds.size.width - 48 , 50   ,24 ,24);
+        //manage.frame = CGRectMake(16 , 55   ,20 ,20);
+        manage.frame = CGRectMake(self.view.bounds.size.width - 48 , 50   ,24 ,24);
+        //settings.frame = CGRectMake(self.view.bounds.size.width - 48 , 50   ,24 ,24);
         header.frame = CGRectMake(0 , 50   ,self.view.bounds.size.width  ,30);
 
         [_collectionView setDataSource:self];
@@ -72,7 +74,7 @@
         [self.view addSubview:_collectionView];
         [self.view addSubview:header];
         [self.view addSubview:manage];
-        [self.view addSubview:settings];
+        //[self.view addSubview:settings];
 
         
         UITapGestureRecognizer *singleFingerTap =

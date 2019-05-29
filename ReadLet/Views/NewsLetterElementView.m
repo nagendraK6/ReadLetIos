@@ -54,7 +54,7 @@
         title.font = [UIFont boldSystemFontOfSize:18];
         
         sub_title = [[UILabel alloc] init];
-        sub_title.text = [NSString stringWithFormat:@"By: %@", news_letter.article_provider_name];
+        sub_title.text = [NSString stringWithFormat:@"%@", news_letter.article_provider_name];
         sub_title.textColor = [UIColor grayColor];
         sub_title.lineBreakMode = NSLineBreakByWordWrapping;
         sub_title.numberOfLines = 0;
