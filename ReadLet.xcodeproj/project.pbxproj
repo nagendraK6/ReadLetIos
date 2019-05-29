@@ -20,6 +20,7 @@
 		853136B522812471009EB0D2 /* NewsLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B422812471009EB0D2 /* NewsLetter.m */; };
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
+		8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAA7229E35EE003E22F6 /* LoggingHelper.m */; };
 		85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */; };
 		85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */; };
 		85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDF228E63EC00B1F06D /* Provider.m */; };
@@ -76,6 +77,8 @@
 		853136B822812EA0009EB0D2 /* NewsLetterElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsLetterElementView.m; sourceTree = "<group>"; };
 		853136BA228136D9009EB0D2 /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		8565CAA6229E35EE003E22F6 /* LoggingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggingHelper.h; sourceTree = "<group>"; };
+		8565CAA7229E35EE003E22F6 /* LoggingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoggingHelper.m; sourceTree = "<group>"; };
 		85B1DED8228E597100B1F06D /* NameAddRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameAddRegistrationViewController.h; sourceTree = "<group>"; };
 		85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameAddRegistrationViewController.m; sourceTree = "<group>"; };
 		85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeNewsletterViewController.h; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		8531367B22812367009EB0D2 /* ReadLet */ = {
 			isa = PBXGroup;
 			children = (
+				8565CAA5229E35CC003E22F6 /* Utils */,
 				853136B622812D1C009EB0D2 /* Views */,
 				853136B222812458009EB0D2 /* Model */,
 				853136AE22812408009EB0D2 /* ViewController */,
@@ -262,6 +266,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8565CAA5229E35CC003E22F6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8565CAA6229E35EE003E22F6 /* LoggingHelper.h */,
+				8565CAA7229E35EE003E22F6 /* LoggingHelper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +286,7 @@
 				8531367522812367009EB0D2 /* Sources */,
 				8531367622812367009EB0D2 /* Frameworks */,
 				8531367722812367009EB0D2 /* Resources */,
+				D0EEB66D7531177F57D7360D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -455,6 +469,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D0EEB66D7531177F57D7360D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet-resources.sh",
+				"${PODS_ROOT}/Amplitude-iOS/Amplitude/api.amplitude.com.der",
+				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoCaLimitedRsaCertificationAuthority.der",
+				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaCA.der",
+				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaDomainValidationCA.der",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/api.amplitude.com.der",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoCaLimitedRsaCertificationAuthority.der",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaCA.der",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaDomainValidationCA.der",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadLet/Pods-ReadLet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -465,6 +507,7 @@
 				85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */,
 				85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */,
 				85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */,
+				8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
 				85C535652294743A00BA9899 /* APPChildViewController.m in Sources */,

@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "AFNetworking.h"
 #import "PhoneNoAskViewController.h"
+#import "LoggingHelper.h"
 @interface SubscribeNewsletterViewController ()
 {
     BOOL init_standalone;
@@ -98,7 +99,9 @@
     
     [self.view addSubview:_collectionView];
     
-    UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
+    NSString *next_title = init_standalone == YES ? @"Next" : @"Save";
+    
+    UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:next_title style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
     self.navigationItem.rightBarButtonItem=next_button;
     self.navigationItem.title = @"Step 1 of 4";
     

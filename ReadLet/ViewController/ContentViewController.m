@@ -7,6 +7,7 @@
 //
 
 #import "ContentViewController.h"
+#import "LoggingHelper.h"
 #import <WebKit/WebKit.h>
 
 @interface ContentViewController ()
@@ -35,10 +36,24 @@
         [webView loadRequest:nsrequest];
         [self.view addSubview:webView];
         
-        
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:(UIBarButtonItemStyleDone) target:self action:@selector(cancelButtonAction:)];
+        self.navigationItem.leftBarButtonItem = doneButton;
+        [LoggingHelper reportLogsDataToAnalytics:RENDER_WEBVIEW];
     }
     return self;
 }
+
+- (void) cancelButtonAction:(id)sender {
+    if ([webView canGoBack]) {
+        [LoggingHelper reportLogsDataToAnalytics:BACK_WEBVIEW];
+        [webView goBack];
+    } else {
+        [LoggingHelper reportLogsDataToAnalytics:CLOSE_WEBVIEW];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {

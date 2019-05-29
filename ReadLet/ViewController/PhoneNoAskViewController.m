@@ -11,7 +11,7 @@
 #import "OTPVerificationViewController.h"
 #import "AFNetworking.h"
 #import "Constants.h"
-
+#import "LoggingHelper.h"
 
 @interface PhoneNoAskViewController ()
 
@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[LoggingHelper reportLogsDataToAnalytics:SCREEN_PHONE_NO_ASK_VISIBLE];
+    [LoggingHelper reportLogsDataToAnalytics:SCREEN_PHONE_NO_ASK_VISIBLE];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

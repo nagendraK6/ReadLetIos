@@ -8,13 +8,10 @@
 
 #import "OTPVerificationViewController.h"
 #import "NameAddRegistrationViewController.h"
-
 #import "AFNetworking.h"
 #import "Constants.h"
-
-
 #import "PhoneNoAskViewController.h"
-
+#import "LoggingHelper.h"
 
 #define kRefreshTimeInSeconds 1
 @interface OTPVerificationViewController ()
@@ -38,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //[LoggingHelper reportLogsDataToAnalytics:SCREEN_OTP_ADD_VISIBLE];
+    [LoggingHelper reportLogsDataToAnalytics:SCREEN_OTP_ADD_VISIBLE];
     self.view.backgroundColor =  [UIColor whiteColor];
 }
 
@@ -103,8 +100,6 @@
         [_otp_4 addTarget:self
                    action:@selector(textFieldDidChange:)
          forControlEvents:UIControlEventEditingChanged];
-        
-        
         
         
         [self.view addSubview:_otp_1];
@@ -218,7 +213,7 @@
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
-    //[LoggingHelper reportLogsDataToAnalytics:TYPING_OTP];
+    [LoggingHelper reportLogsDataToAnalytics:TYPING_OTP];
     
     if (textField == _otp_1) {
         [_otp_2 becomeFirstResponder];
@@ -302,7 +297,7 @@
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //[LoggingHelper reportLogsDataToAnalytics:OTP_SEND_SERVER_SUCCESS];
+        [LoggingHelper reportLogsDataToAnalytics:OTP_SEND_SERVER_SUCCESS];
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if(httpResponse.statusCode == 401) {
             // unauthorized token...redirect to phone no ask view controller
@@ -420,7 +415,7 @@
 
 - (void)didTapLabelWithGesture:(UITapGestureRecognizer *)tapGesture {
     [next_button setUserInteractionEnabled:NO];
-    //[LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP];
+    [LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP];
     [self showResendText];
     [self startANewTimer];
     [self resetOTP];
@@ -443,7 +438,7 @@
     
     [manager POST:urlstring parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)responseObject;
-        //[LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP_SERVER_SUCCESS];
+        [LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP_SERVER_SUCCESS];
         if(httpResponse.statusCode == 401) {
             // unauthorized token...redirect to phone no ask view controller
             PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
@@ -451,7 +446,7 @@
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-       // [LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP_SERVER_FAILED];
+        [LoggingHelper reportLogsDataToAnalytics:CLICKED_RESEND_OTP_SERVER_FAILED];
     }];
 }
 

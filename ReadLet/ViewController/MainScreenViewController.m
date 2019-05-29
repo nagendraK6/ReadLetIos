@@ -160,8 +160,6 @@
     ContentViewController *vc = [[ContentViewController alloc] initWithURLString:url];
     
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:(UIBarButtonItemStyleDone) target:self action:@selector(cancelButtonAction:)];
-    vc.navigationItem.leftBarButtonItem = doneButton;
 
     [self presentViewController:navigation animated:YES completion:nil];
 }

@@ -10,6 +10,7 @@
 #import "NewsElementProviderTitleView.h"
 #import "NewsLetter.h"
 #import "SDWebImage.h"
+#import "LoggingHelper.h"
 
 @implementation NewsLetterElementView
 {
@@ -93,6 +94,7 @@
 
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    [LoggingHelper reportLogsDataToAnalytics:TAP_ARTICLE];
     [self.delegate onNewsLetterClick:elm.url_for_content];
 }
 

@@ -144,7 +144,7 @@
     
     
     
-    tc_line_1.text = @"By clicking on Get Started button, you agree";
+    tc_line_1.text = @"By clicking on Start Reading button, you agree";
     
     NSMutableAttributedString *attributedString_1 = [[NSMutableAttributedString alloc] initWithString:@"to the Readlet's terms and conditions and" attributes:nil];
     NSRange linkRange_1 = NSMakeRange(14, 20); // for the word "link" in the string above
@@ -204,11 +204,11 @@
 
 
 - (void)didTapLabelWithGesture_2:(UITapGestureRecognizer *)tapGesture {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rely.ai/tc.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.readlet.io/tc"]];
 }
 
 - (void)didTapLabelWithGesture_3:(UITapGestureRecognizer *)tapGesture {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rely.ai/privacy.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.readlet.io/privacy"]];
 }
 
 @end

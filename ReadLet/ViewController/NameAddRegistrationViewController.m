@@ -11,8 +11,8 @@
 #import "MainScreenViewController.h"
 #import "PhoneNoAskViewController.h"
 #import "SubscribeNewsletterViewController.h"
-
 #import "AFNetworking.h"
+#import "LoggingHelper.h"
 
 @interface NameAddRegistrationViewController ()
 
@@ -79,7 +79,7 @@
 
 -(void)rightBtnClick{
     NSLog(@"Next clicked");
-   // [LoggingHelper reportLogsDataToAnalytics:CLICKED_NAME_SEND];
+    [LoggingHelper reportLogsDataToAnalytics:CLICKED_NAME_SEND];
     [last_name resignFirstResponder];
     [first_name resignFirstResponder];
     [_activityIndicator startAnimating];
@@ -136,12 +136,12 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-  //  [LoggingHelper reportLogsDataToAnalytics:SCREEN_NAME_ASK_VISIBLE];
+    [LoggingHelper reportLogsDataToAnalytics:SCREEN_NAME_ASK_VISIBLE];
     [first_name becomeFirstResponder];
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
-  //  [LoggingHelper reportLogsDataToAnalytics:TYPING_NAME];
+    [LoggingHelper reportLogsDataToAnalytics:TYPING_NAME];
     if (textField == first_name) {
         if (![first_name.text  isEqual: @""]) {
             self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.00 green:0.55 blue:1.00 alpha:1.0];
@@ -186,7 +186,7 @@
         MainScreenViewController *vc = [[MainScreenViewController alloc] init];
         [self presentViewController:vc animated:YES completion:nil];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        //[LoggingHelper reportLogsDataToAnalytics:PHONE_SEND_SERVER_FAILED];
+        [LoggingHelper reportLogsDataToAnalytics:PHONE_SEND_SERVER_FAILED];
         NSLog(@"Error: %@", error);
     }];
 }

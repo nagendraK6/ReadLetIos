@@ -11,6 +11,7 @@
 #import "SubscribeNewsletterViewController.h"
 #import "APPViewController.h"
 #import "NameAddRegistrationViewController.h"
+#import "LoggingHelper.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [LoggingHelper initLogsAnalyticsProvider];
     
     UIPageControl *pageControl = [UIPageControl appearance];
         pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -70,11 +72,13 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [LoggingHelper reportLogsDataToAnalytics:APP_BG];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [LoggingHelper reportLogsDataToAnalytics:APP_FG];
 }
 
 
