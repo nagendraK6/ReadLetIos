@@ -130,9 +130,7 @@
          initWithTarget:self action:@selector(didTapLabelWithGesture:)];
         [next_button addGestureRecognizer:tapGesture];
         
-        [self.view addSubview:next_button];
-        
-        self.navigationItem.title = @"Step 3 of 4";
+        [self.view addSubview:next_button];        
     }
     
     [self startANewTimer];

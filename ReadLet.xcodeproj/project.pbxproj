@@ -21,6 +21,7 @@
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
 		8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAA7229E35EE003E22F6 /* LoggingHelper.m */; };
+		8565CAAC229E577C003E22F6 /* RequestForNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */; };
 		85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */; };
 		85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */; };
 		85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDF228E63EC00B1F06D /* Provider.m */; };
@@ -79,6 +80,9 @@
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		8565CAA6229E35EE003E22F6 /* LoggingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggingHelper.h; sourceTree = "<group>"; };
 		8565CAA7229E35EE003E22F6 /* LoggingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoggingHelper.m; sourceTree = "<group>"; };
+		8565CAA9229E5229003E22F6 /* ReadLet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadLet.entitlements; sourceTree = "<group>"; };
+		8565CAAA229E577C003E22F6 /* RequestForNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestForNotificationViewController.h; sourceTree = "<group>"; };
+		8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestForNotificationViewController.m; sourceTree = "<group>"; };
 		85B1DED8228E597100B1F06D /* NameAddRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameAddRegistrationViewController.h; sourceTree = "<group>"; };
 		85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameAddRegistrationViewController.m; sourceTree = "<group>"; };
 		85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeNewsletterViewController.h; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		8531367B22812367009EB0D2 /* ReadLet */ = {
 			isa = PBXGroup;
 			children = (
+				8565CAA9229E5229003E22F6 /* ReadLet.entitlements */,
 				8565CAA5229E35CC003E22F6 /* Utils */,
 				853136B622812D1C009EB0D2 /* Views */,
 				853136B222812458009EB0D2 /* Model */,
@@ -236,6 +241,8 @@
 				85C535642294743A00BA9899 /* APPChildViewController.m */,
 				85C535662294747700BA9899 /* APPViewController.h */,
 				85C535672294747700BA9899 /* APPViewController.m */,
+				8565CAAA229E577C003E22F6 /* RequestForNotificationViewController.h */,
+				8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -346,6 +353,11 @@
 				TargetAttributes = {
 					8531367822812367009EB0D2 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					8531369022812368009EB0D2 = {
 						CreatedOnToolsVersion = 10.2;
@@ -518,6 +530,7 @@
 				853136B522812471009EB0D2 /* NewsLetter.m in Sources */,
 				85C535682294747700BA9899 /* APPViewController.m in Sources */,
 				850942662291A7A4004A7B4C /* HeaderView.m in Sources */,
+				8565CAAC229E577C003E22F6 /* RequestForNotificationViewController.m in Sources */,
 				85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */,
 				8531368C22812368009EB0D2 /* main.m in Sources */,
 				85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */,
@@ -674,6 +687,7 @@
 			baseConfigurationReference = 56DD1BD48A515D1D65FBA0F3 /* Pods-ReadLet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ReadLet/ReadLet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC693DJEZK;
 				INFOPLIST_FILE = ReadLet/Info.plist;
@@ -692,6 +706,7 @@
 			baseConfigurationReference = 9DABDCB74F92E3F0554E60AE /* Pods-ReadLet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ReadLet/ReadLet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC693DJEZK;
 				INFOPLIST_FILE = ReadLet/Info.plist;

@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "PhoneNoAskViewController.h"
 #import "LoggingHelper.h"
+
 @interface SubscribeNewsletterViewController ()
 {
     BOOL init_standalone;
@@ -31,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     NSLog(@"view did load");
     title.frame = CGRectMake(0, 5, self.view.frame.size.width, 20);
     // Do any additional setup after loading the view.

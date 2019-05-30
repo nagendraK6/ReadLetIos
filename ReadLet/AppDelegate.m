@@ -12,7 +12,9 @@
 #import "APPViewController.h"
 #import "NameAddRegistrationViewController.h"
 #import "LoggingHelper.h"
-
+#import "RequestForNotificationViewController.h"
+#import "Constants.h"
+#import "AFNetworking.h"
 @interface AppDelegate ()
 
 @end
@@ -90,6 +92,64 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+-(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"Device token %@", token);
+    [self sendDeviceIdToServer:token];
+    // send device token for registration
+}
+
+- (void) sendDeviceIdToServer:(NSString *)deviceId {
+    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+    NSDictionary *user_info = [data objectForKey:@"user_info"];
+    NSString *user_token = [user_info objectForKey:@"user_token"];
+    
+    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/add_device_id"];
+    NSURL *URL = [NSURL URLWithString:urlstring];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *parameters = @{ @"device_id": deviceId};
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", user_token] forHTTPHeaderField:@"Authorization"];
+    [manager POST:URL.absoluteString parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"send device token JSON: %@", responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    NSLog(@"didReceiveRemoteNotification with completionHandler");
+    // Must call completion handler
+    if (userInfo.count > 0) {
+        completionHandler(UIBackgroundFetchResultNewData);
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
+    NSLog(@"userInfo:%@", userInfo);
+    __weak typeof (self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        SEL openDetails = @selector(openDetailsViewFromNotificationInfo:);
+        //The below line will removes previous request.
+        [NSObject cancelPreviousPerformRequestsWithTarget:strongSelf selector:openDetails object:userInfo];
+        //Not neccessary
+        [strongSelf performSelector:openDetails withObject:userInfo afterDelay:0.5];
+    });
+}
+
+-(void)openDetailsViewFromNotificationInfo:(NSDictionary *)userInfo {
+    
+//    NSLog(@"topVC: %@", topVC);
+    //Here BaseViewController is the root view, this will initiate on App launch also.
 }
 
 

@@ -13,6 +13,7 @@
 #import "SubscribeNewsletterViewController.h"
 #import "AFNetworking.h"
 #import "LoggingHelper.h"
+#import "RequestForNotificationViewController.h"
 
 @interface NameAddRegistrationViewController ()
 
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+
     // Do any additional setup after loading the view.
 }
 
@@ -66,7 +69,7 @@
         [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.width/2)];
         [self.view addSubview:_activityIndicator];
         
-        self.navigationItem.title = @"Step 4 of 4";
+        self.navigationItem.title = @"Step 3 of 4";
         
         UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
         next_button.tintColor = [UIColor lightGrayColor];
@@ -183,8 +186,17 @@
         [defaults setObject:updated_object forKey:@"user_info"];
         
         
-        MainScreenViewController *vc = [[MainScreenViewController alloc] init];
-        [self presentViewController:vc animated:YES completion:nil];
+        CATransition *transition = [[CATransition alloc] init];
+        transition.duration = 0.5;
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromRight;
+        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+        [self.view.window.layer addAnimation:transition forKey:kCATransition];
+        RequestForNotificationViewController *vc = [[RequestForNotificationViewController alloc] init];
+        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+        [self presentViewController:navigation animated:YES completion:^{
+            NSLog(@"Completed");
+        }];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         [LoggingHelper reportLogsDataToAnalytics:PHONE_SEND_SERVER_FAILED];
         NSLog(@"Error: %@", error);

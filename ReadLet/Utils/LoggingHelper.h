@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) initLogsAnalyticsProvider;
 + (void) reportLogsDataToAnalytics:(NSString *)event_name;
 
+
 // app activity events
 #define APP_BG @"APP_BG"
 #define APP_FG @"APP_FG"
