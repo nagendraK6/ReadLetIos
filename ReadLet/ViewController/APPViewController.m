@@ -204,11 +204,11 @@
 
 
 - (void)didTapLabelWithGesture_2:(UITapGestureRecognizer *)tapGesture {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.readlet.io/tc"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.readlet.io/tos"]];
 }
 
 - (void)didTapLabelWithGesture_3:(UITapGestureRecognizer *)tapGesture {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.readlet.io/privacy"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.readlet.io/privacy"]];
 }
 
 @end
