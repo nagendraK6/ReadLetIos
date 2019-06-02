@@ -13,6 +13,7 @@
 @interface ContentViewController ()
 {
     WKWebView *webView;
+    UIActivityIndicatorView *_activityIndicator;
 }
 @end
 
@@ -21,13 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
+
 
 - (id) initWithURLString:(NSString *) url_link  title:(NSString *)title {
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
-        
         WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
         webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
         webView.navigationDelegate = self;
@@ -40,6 +42,11 @@
         self.navigationItem.leftBarButtonItem = doneButton;
         [LoggingHelper reportLogsDataToAnalytics:RENDER_WEBVIEW];
         self.title = title;
+        
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)];
+        [self.view addSubview:_activityIndicator];
+        [_activityIndicator startAnimating];
     }
     return self;
 }
@@ -60,11 +67,18 @@
 {
     //this is a 'new window action' (aka target="_blank") > open this URL externally. If we´re doing nothing here, WKWebView will also just do nothing. Maybe this will change in a later stage of the iOS 8 Beta
     if (!navigationAction.targetFrame) {
+        [_activityIndicator startAnimating];
         NSURL *url = navigationAction.request.URL;
         NSURLRequest *nsrequest=[NSURLRequest requestWithURL:url];
         [webView loadRequest:nsrequest];
     }
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    NSLog(@"Loading complete of webview");
+    [LoggingHelper reportLogsDataToAnalytics:RENDER_WEBVIEW_SUCCESS];
+   [_activityIndicator stopAnimating];
 }
 
 /*
