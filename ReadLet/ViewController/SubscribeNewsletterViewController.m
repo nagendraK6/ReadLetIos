@@ -203,6 +203,7 @@
         
         for (id message_c in message_data) {
             NSString  *provider_name = [message_c objectForKey:@"provider_name"];
+            NSString  *description = [message_c objectForKey:@"description"];
             NSString *provider_url = [message_c objectForKey:@"provider_url"];
             NSInteger provider_id = [[message_c objectForKey:@"provider_id"] integerValue];
             Boolean is_subscribed = [[message_c objectForKey:@"is_subscribed"] boolValue];
@@ -212,6 +213,7 @@
             a.image_url = provider_url;
             a.provider_id = provider_id;
             a.is_subscribed = is_subscribed;
+            a.details = description;
             if (a.is_subscribed == YES) {
                 NSNumber *number = [NSNumber numberWithInt:provider_id];
                 [selected_provider_ids addObject:number];
@@ -236,6 +238,26 @@
         NSInteger index = [selected_provider_ids indexOfObject:number];
         [selected_provider_ids removeObjectAtIndex:index];
     }
+}
+
+
+- (void) onInfoClick:(NSString *) name  description:(NSString *)description {
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:name
+                                 message:description
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                               }];
+    
+    
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:NO completion:nil];
 }
 
 

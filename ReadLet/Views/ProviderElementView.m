@@ -25,6 +25,7 @@
     Provider *elm;
     UIImageView *creator_image;
     UIImageView *selected_icon;
+    UIImageView *info_icon;
     BOOL is_selected;
 }
 /*
@@ -52,6 +53,10 @@
         
         selected_icon= [[UIImageView alloc] init];
         selected_icon.image = [UIImage imageNamed:@"selected"];
+
+        info_icon = [[UIImageView alloc] init];
+        info_icon.image = [UIImage imageNamed:@"info"];
+
         
         title = [[UILabel alloc] init];
         title.text = [NSString stringWithFormat:@"%@", provider.name];
@@ -70,11 +75,20 @@
         [self addSubview:creator_image];
         [self addSubview:title];
         [self addSubview:selected_icon];
-        
+        [self addSubview:info_icon];
+
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];
         [self addGestureRecognizer:singleFingerTap];
+        
+        
+        info_icon.userInteractionEnabled = YES;
+        UITapGestureRecognizer *clickInfo =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(onInfoClick:)];
+        [info_icon addGestureRecognizer:clickInfo];
+        
     }
     return self;
 }
@@ -83,6 +97,7 @@
     [super layoutSubviews];
     creator_image.frame =  CGRectMake(self.frame.size.width /2 -25, 20, 50, 50);
     selected_icon.frame =  CGRectMake(self.frame.size.width - 25, 100 , 20, 20);
+    info_icon.frame = CGRectMake(5, 5 , 20, 20);
     title.frame = CGRectMake(0, 85, self.frame.size.width, 15);
 }
 
@@ -95,6 +110,10 @@
         selected_icon.hidden = NO;
     }
     [self.delegate onProviderClick:elm.provider_id isHidden:!is_selected];
+}
+
+- (void) onInfoClick:(UITapGestureRecognizer *)recognizer {
+    [self.delegate onInfoClick:elm.name description:elm.details];
 }
 
 @end

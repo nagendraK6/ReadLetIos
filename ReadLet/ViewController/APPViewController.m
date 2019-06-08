@@ -10,6 +10,7 @@
 #import "APPChildViewController.h"
 #import "SubscribeNewsletterViewController.h"
 #import "NameAddRegistrationViewController.h"
+#import "LoggingHelper.h"
 
 @interface APPViewController () 
 
@@ -105,6 +106,7 @@
 }
 
 - (void) viewWillLayoutSubviews {
+    [LoggingHelper reportLogsDataToAnalytics:FIRST_SCREEN_VISIBLE];
     tc_line_1.frame = CGRectMake(0 ,self.view.frame.size.height  - 140 ,self.view.frame.size.width,10);
     tc_line_2.frame = CGRectMake(0 ,self.view.frame.size.height -125 ,self.view.frame.size.width,10);
     tc_line_3.frame = CGRectMake(0 ,self.view.frame.size.height -110,self.view.frame.size.width,10);
@@ -181,7 +183,7 @@
 }
 
 - (void)didTapLabelWithGesture:(UITapGestureRecognizer *)tapGesture {
-    // [LoggingHelper reportLogsDataToAnalytics:CLICKED_GET_STARTED];
+    [LoggingHelper reportLogsDataToAnalytics:CLICKED_START_READING];
     CATransition *transition = [[CATransition alloc] init];
     transition.duration = 0.5;
     transition.type = kCATransitionPush;

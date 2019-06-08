@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSString *image_url;
 
+@property (strong, nonatomic) NSString *details;
+
 
 @end
 

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ProviderElementViewDelegate <NSObject>
 - (void) onProviderClick:(NSInteger ) provider_id isHidden:(BOOL)is_hidden;
-
+- (void) onInfoClick:(NSString *) name  description:(NSString *)description;
 
 @end
 

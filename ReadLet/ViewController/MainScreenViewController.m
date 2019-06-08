@@ -154,7 +154,7 @@
 
 - (void) onNewsLetterClick:(NSString *)url title:(NSString *)title {
     CATransition *transition = [[CATransition alloc] init];
-    transition.duration = 1.0;
+    transition.duration = 0.2;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
