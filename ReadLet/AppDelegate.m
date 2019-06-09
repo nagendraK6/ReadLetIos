@@ -15,6 +15,8 @@
 #import "RequestForNotificationViewController.h"
 #import "Constants.h"
 #import "AFNetworking.h"
+#import "ContentViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -133,6 +135,25 @@
         completionHandler(UIBackgroundFetchResultNewData);
     } else {
         completionHandler(UIBackgroundFetchResultNoData);
+    }
+    
+    if (application.applicationState == UIApplicationStateInactive) {
+        if (userInfo.count > 0) {
+            NSString *payload_type = [userInfo objectForKey:@"payload_type"];
+            if ([payload_type isEqualToString:@"new_newsletter"]) {
+                NSString *message_url = [userInfo objectForKey:@"message_url"];
+                NSString *title = [userInfo objectForKey:@"title"];
+                
+                ContentViewController *vc = [[ContentViewController alloc] initWithURLString:message_url title:title];
+                
+                UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+                
+                [LoggingHelper reportLogsDataToAnalytics:CLICKED_NEWSLETTER_NOTIFICATION];
+
+                [self.window.rootViewController presentViewController:navigation animated:YES completion:NULL];
+                 NSLog(@"New newsletter received");
+            }
+        }
     }
     NSLog(@"userInfo:%@", userInfo);
     __weak typeof (self) weakSelf = self;

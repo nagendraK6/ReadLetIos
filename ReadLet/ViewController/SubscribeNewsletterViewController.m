@@ -88,7 +88,7 @@
     selected_provider_ids = [[NSMutableArray alloc] init];
     
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
-    [layout setMinimumLineSpacing:10.0f];
+    [layout setMinimumLineSpacing:0.0f];
     _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     _collectionView.frame = CGRectMake(0 , 100 ,self.view.bounds.size.width ,self.view.bounds.size.height-50);
     
@@ -141,9 +141,6 @@
     new_element.frame = cell.bounds;
     new_element.delegate = self;
     
-    cell.contentView.layer.borderWidth = 1.0f;
-    cell.contentView.layer.borderColor = [UIColor grayColor].CGColor;
-    cell.contentView.layer.masksToBounds = YES;
     
     
     [cell.contentView addSubview:new_element];
@@ -154,20 +151,20 @@
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    float cellWidth = screenWidth / 3; //Replace the divisor with the column count requirement. Make sure to have it in float.
+    float cellWidth = screenWidth; //Replace the divisor with the column count requirement. Make sure to have it in float.
     //CGFloat screenHeight = screenRect.size.height;
     //float cellHeight = screenHeight/3.0;
     
 
     
-    CGSize size = CGSizeMake(cellWidth - 20, 125);
+    CGSize size = CGSizeMake(cellWidth, 70);
     return size;
     
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 10,0,10);
+    return UIEdgeInsetsMake(0, 0,0,0);
 }
 
 - (void) cancelButtonAction:(id)sender {
