@@ -15,6 +15,19 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Amplitude-iOS (4.6.0)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
+  - GTMSessionFetcher/Core (1.2.1)
   - SDWebImage (5.0.2):
     - SDWebImage/Core (= 5.0.2)
   - SDWebImage/Core (5.0.2)
@@ -22,19 +35,26 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Amplitude-iOS
+  - GoogleSignIn
   - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Amplitude-iOS
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
     - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Amplitude-iOS: ac1715ae68104b7a51723209ad574f60ab22ae5f
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
 
-PODFILE CHECKSUM: 504c59addf98c4495919f29db9ab18e7a46f365c
+PODFILE CHECKSUM: c9b245aebec0ae526766a14fe1785fbec69ea7f9
 
 COCOAPODS: 1.5.3

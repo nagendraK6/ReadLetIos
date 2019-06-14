@@ -16,8 +16,19 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.2</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.126469114432-kjrbi42in68eipug284kns5sqgqm1t67</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>40</string>
+	<string>42</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

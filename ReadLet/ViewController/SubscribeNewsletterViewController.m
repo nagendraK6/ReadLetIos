@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "PhoneNoAskViewController.h"
 #import "LoggingHelper.h"
+#import "SignupLoginViewController.h"
 
 @interface SubscribeNewsletterViewController ()
 {
@@ -324,7 +325,7 @@
     transition.subtype = kCATransitionFromRight;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [self.view.window.layer addAnimation:transition forKey:kCATransition];
-    PhoneNoAskViewController *vc = [[PhoneNoAskViewController alloc] init];
+    SignupLoginViewController *vc = [[SignupLoginViewController alloc] init];
     
     
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];

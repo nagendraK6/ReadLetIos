@@ -20,6 +20,8 @@
 		853136B522812471009EB0D2 /* NewsLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B422812471009EB0D2 /* NewsLetter.m */; };
 		853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136B822812EA0009EB0D2 /* NewsLetterElementView.m */; };
 		853136BC228136D9009EB0D2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853136BB228136D9009EB0D2 /* ContentViewController.m */; };
+		8559BB8322AF4BD300AF485E /* SignupLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8559BB8222AF4BD300AF485E /* SignupLoginViewController.m */; };
+		8559BB8622B0949300AF485E /* SignupWithEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8559BB8522B0949300AF485E /* SignupWithEmailViewController.m */; };
 		8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAA7229E35EE003E22F6 /* LoggingHelper.m */; };
 		8565CAAC229E577C003E22F6 /* RequestForNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */; };
 		85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */; };
@@ -78,6 +80,10 @@
 		853136B822812EA0009EB0D2 /* NewsLetterElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsLetterElementView.m; sourceTree = "<group>"; };
 		853136BA228136D9009EB0D2 /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		853136BB228136D9009EB0D2 /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		8559BB8122AF4BD300AF485E /* SignupLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupLoginViewController.h; sourceTree = "<group>"; };
+		8559BB8222AF4BD300AF485E /* SignupLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupLoginViewController.m; sourceTree = "<group>"; };
+		8559BB8422B0949300AF485E /* SignupWithEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupWithEmailViewController.h; sourceTree = "<group>"; };
+		8559BB8522B0949300AF485E /* SignupWithEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupWithEmailViewController.m; sourceTree = "<group>"; };
 		8565CAA6229E35EE003E22F6 /* LoggingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggingHelper.h; sourceTree = "<group>"; };
 		8565CAA7229E35EE003E22F6 /* LoggingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoggingHelper.m; sourceTree = "<group>"; };
 		8565CAA9229E5229003E22F6 /* ReadLet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadLet.entitlements; sourceTree = "<group>"; };
@@ -243,6 +249,10 @@
 				85C535672294747700BA9899 /* APPViewController.m */,
 				8565CAAA229E577C003E22F6 /* RequestForNotificationViewController.h */,
 				8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */,
+				8559BB8122AF4BD300AF485E /* SignupLoginViewController.h */,
+				8559BB8222AF4BD300AF485E /* SignupLoginViewController.m */,
+				8559BB8422B0949300AF485E /* SignupWithEmailViewController.h */,
+				8559BB8522B0949300AF485E /* SignupWithEmailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -494,6 +504,7 @@
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoCaLimitedRsaCertificationAuthority.der",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaCA.der",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaDomainValidationCA.der",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
@@ -503,6 +514,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoCaLimitedRsaCertificationAuthority.der",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaCA.der",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaDomainValidationCA.der",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -517,9 +529,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F4221A22864803005C655E /* NewsElementProviderTitleView.m in Sources */,
+				8559BB8622B0949300AF485E /* SignupWithEmailViewController.m in Sources */,
 				85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */,
 				85B1DEE3228E64FF00B1F06D /* ProviderElementView.m in Sources */,
 				8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */,
+				8559BB8322AF4BD300AF485E /* SignupLoginViewController.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
 				85C535652294743A00BA9899 /* APPChildViewController.m in Sources */,

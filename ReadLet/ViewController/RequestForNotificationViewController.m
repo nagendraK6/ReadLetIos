@@ -9,7 +9,7 @@
 #import "RequestForNotificationViewController.h"
 #import "MainScreenViewController.h"
 #import <UserNotifications/UserNotifications.h>
-
+#import "LoggingHelper.h"
 @interface RequestForNotificationViewController ()
 
 @end
@@ -84,8 +84,7 @@
         [[UITapGestureRecognizer alloc]
          initWithTarget:self action:@selector(skipClicked:)];
         [skip addGestureRecognizer:tapGestureSkip];
-
-        
+        [LoggingHelper reportLogsDataToAnalytics:REQUEST_FOR_NOTIFICATION_VISIBLE];
     }
     return self;
 }
@@ -102,6 +101,7 @@
 }
 
 - (void) skipClicked:(UITapGestureRecognizer *)tapGesture {
+    [LoggingHelper reportLogsDataToAnalytics:SKIPPED_NOTIFICATION];
     MainScreenViewController *vc = [[MainScreenViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -119,6 +119,7 @@
 }
 
 - (void)registerForRemoteNotifications {
+    [LoggingHelper reportLogsDataToAnalytics:REGISTERED_FOR_NOTIFICATION];
     if(@available(iOS 10.0, *)){
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
