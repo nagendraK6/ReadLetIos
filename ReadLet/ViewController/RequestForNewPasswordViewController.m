@@ -1,27 +1,25 @@
 //
-//  SignupWithEmailViewController.m
+//  RequestForNotificationViewController.h
 //  ReadLet
 //
 //  Created by Nagendra on 6/11/19.
 //  Copyright © 2019 Rely Labs. All rights reserved.
 //
 
-#import "SignupWithEmailViewController.h"
-#import "SigninWithEmailViewController.h"
 #import "Constants.h"
 #import "AFNetworking.h"
 #import "RequestForNotificationViewController.h"
+#import "RequestForNewPasswordViewController.h"
 
-@interface SignupWithEmailViewController ()
+@interface RequestForNewPasswordViewController ()
 
 @end
 
-@implementation SignupWithEmailViewController
+@implementation RequestForNewPasswordViewController
 {
     UILabel *title;
     UIImageView *next;
-    UITextField *first_name;
-    UITextField *last_name;
+    UITextField *password_reset_code;
     UITextField *email;
     UITextField *password;
 }
@@ -31,113 +29,93 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    first_name.frame = CGRectMake(48, 170, self.view.frame.size.width - 96, 52);
-    last_name.frame = CGRectMake(48, 230, self.view.frame.size.width - 96, 52);
-    email.frame = CGRectMake(48, 290, self.view.frame.size.width - 96, 52);
+    email.frame = CGRectMake(48, 170, self.view.frame.size.width - 96, 52);
+    password_reset_code.frame = CGRectMake(48, 230, self.view.frame.size.width - 96, 52);
     password.frame = CGRectMake(48, 350, self.view.frame.size.width - 96, 52);
-
+    
     next.frame = CGRectMake(self.view.frame.size.width /2 - 75, 420, 151, 48);
     title.frame = CGRectMake(16, 100, self.view.frame.size.width - 96, 61);
-
+    
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12.5, 20)];
     
     UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12.5, 20)];
-
+    
     UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12.5, 20)];
-
-    UIView *paddingView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12.5, 20)];
-
     
     
-    first_name.layer.cornerRadius = 8.0f;
-    first_name.layer.borderWidth = 1.0f;
-    first_name.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    first_name.layer.masksToBounds = YES;
     
-    first_name.leftView = paddingView;
-    first_name.leftViewMode = UITextFieldViewModeAlways;
-
     
-    last_name.layer.cornerRadius = 8.0f;
-    last_name.layer.borderWidth = 1.0f;
-    last_name.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    last_name.layer.masksToBounds = YES;
-    
-    last_name.leftView = paddingView1;
-    last_name.leftViewMode = UITextFieldViewModeAlways;
-    
-
     email.layer.cornerRadius = 8.0f;
     email.layer.borderWidth = 1.0f;
     email.layer.borderColor = [UIColor lightGrayColor].CGColor;
     email.layer.masksToBounds = YES;
     
-    email.leftView = paddingView2;
+    email.leftView = paddingView;
     email.leftViewMode = UITextFieldViewModeAlways;
-    [next setUserInteractionEnabled:YES];
+    
+    
+    password_reset_code.layer.cornerRadius = 8.0f;
+    password_reset_code.layer.borderWidth = 1.0f;
+    password_reset_code.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    password_reset_code.layer.masksToBounds = YES;
+    
+    password_reset_code.leftView = paddingView1;
+    password_reset_code.leftViewMode = UITextFieldViewModeAlways;
+    
     
     password.layer.cornerRadius = 8.0f;
     password.layer.borderWidth = 1.0f;
     password.layer.borderColor = [UIColor lightGrayColor].CGColor;
     password.layer.masksToBounds = YES;
     
-    password.leftView = paddingView3;
+    password.leftView = paddingView2;
     password.leftViewMode = UITextFieldViewModeAlways;
- 
-    
-    [first_name addTarget:self
-                   action:@selector(textFieldDidChange:)
-         forControlEvents:UIControlEventEditingChanged];
+    [next setUserInteractionEnabled:YES];
     
     
-    [last_name addTarget:self
-                  action:@selector(textFieldDidChange:)
-        forControlEvents:UIControlEventEditingChanged];
+    
 
-    [email addTarget:self
-                  action:@selector(textFieldDidChange:)
-        forControlEvents:UIControlEventEditingChanged];
-
+    
+    [password_reset_code addTarget:self
+              action:@selector(textFieldDidChange:)
+    forControlEvents:UIControlEventEditingChanged];
+    
     [password addTarget:self
-                  action:@selector(textFieldDidChange:)
-        forControlEvents:UIControlEventEditingChanged];
-
+                 action:@selector(textFieldDidChange:)
+       forControlEvents:UIControlEventEditingChanged];
     
-    [first_name becomeFirstResponder];
+    
+    [password_reset_code becomeFirstResponder];
     
     UITapGestureRecognizer *tapGesture = \
     [[UITapGestureRecognizer alloc]
-     initWithTarget:self action:@selector(signupEmail:)];
+     initWithTarget:self action:@selector(resetPasswordRequest:)];
     [next addGestureRecognizer:tapGesture];
     
-
+    
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
     if([self shouldEnable] == YES) {
         next.image = [UIImage imageNamed:@"nextdark"];
         [next setUserInteractionEnabled:YES];
-
+        
     } else {
         next.image = [UIImage imageNamed:@"nextgray"];
         [next setUserInteractionEnabled:NO];
-
+        
     }
 }
 
-- (void) signupEmail:(UITapGestureRecognizer *)tapGesture {
+- (void) resetPasswordRequest:(UITapGestureRecognizer *)tapGesture {
     next.image = [UIImage imageNamed:@"nextgray"];
     [next setUserInteractionEnabled:NO];
-    [self sendSignupWithEmail];
+    [self sendPasswordReset];
 }
 
 
 - (BOOL) shouldEnable {
-    if ([first_name.text  isEqual: @""]) {
-        return NO;
-    }
-    
-    if ([email.text  isEqual: @""]) {
+    if ([password_reset_code.text  isEqual: @""]) {
         return NO;
     }
     
@@ -148,7 +126,7 @@
     return YES;
 }
 
-- (instancetype)init
+- (instancetype)initWithEmail:(NSString *) email_id
 {
     self = [super init];
     if (self) {
@@ -166,26 +144,25 @@
         
         
         
-        first_name = [[UITextField alloc] init];
-        first_name.placeholder = @"First Name";
+        password_reset_code = [[UITextField alloc] init];
+        password_reset_code.placeholder = @"Password reset code";
         
-        last_name = [[UITextField alloc] init];
-        last_name.placeholder = @"Last Name";
         
         email = [[UITextField alloc] init];
         email.placeholder = @"Email";
+        email.text = email_id;
+        [email setEnabled:NO];
         
         password = [[UITextField alloc] init];
         password.placeholder = @"Password (must be 8 characters)";
         password.secureTextEntry = YES;
-
         
         
-        [self.view addSubview:first_name];
-        [self.view addSubview:last_name];
+        
+        [self.view addSubview:password_reset_code];
         [self.view addSubview:email];
         [self.view addSubview:password];
-
+        
         [self.view addSubview:title];
         [self.view addSubview:next];
         self.navigationItem.title = @"Step 3 of 4";
@@ -194,21 +171,20 @@
 }
 
 
-- (void) sendSignupWithEmail {
+- (void) sendPasswordReset {
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
     NSDictionary *user_info = [data objectForKey:@"user_info"];
     NSArray *selected_provider_ids = [user_info objectForKey:@"selected_provider_ids"];
     
-    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/signup_with_email"];
+    NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/password_reset"];
     NSURL *URL = [NSURL URLWithString:urlstring];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{
                                  @"provider_ids": selected_provider_ids,
-                                 @"first_name" : first_name.text,
-                                 @"last_name" : last_name.text,
-                                 @"email" : email.text,
-                                 @"password": password.text
+                                 @"email": email.text,
+                                 @"password": password.text,
+                                 @"password_reset_code": password.text
                                  };
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -223,7 +199,7 @@
             
             NSDictionary *old_info = [data objectForKey:@"user_info"];
             NSMutableDictionary *user_info = [[NSMutableDictionary alloc] initWithDictionary:old_info];
-
+            
             [user_info setObject:@YES forKey:@"has_subscribed"];
             [user_info setObject:[NSNumber numberWithBool:NO] forKey:@"is_otp_verified"];
             [user_info setObject:[responseDictionary objectForKey:@"user_id"] forKey:@"user_id"];
@@ -232,7 +208,7 @@
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:user_info forKey:@"user_info"];
-
+            
             RequestForNotificationViewController *vc = [[RequestForNotificationViewController alloc] init];
             UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
             [self presentViewController:navigation animated:YES completion:^{
@@ -243,37 +219,19 @@
             
             
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:@"Existing account"
-                                         message:@"The email id already in use. Use other email id or login with this email id."
+                                         alertControllerWithTitle:@"Password reset"
+                                         message:@"Your password reset code is incorrect. Try again or you can request again from the below link."
                                          preferredStyle:UIAlertControllerStyleAlert];
             
             
             
             UIAlertAction* yesButton = [UIAlertAction
-                                        actionWithTitle:@"Sign In"
+                                        actionWithTitle:@"OK"
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
                                             //Handle your yes please button action here
-                                            
-                                            SigninWithEmailViewController *vc = [[SigninWithEmailViewController alloc] initWithEmail:self->email.text];
-                                            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
-                                            [self presentViewController:navigation animated:YES completion:^{
-                                                NSLog(@"Completed");
-                                            }];
+                
                                         }];
-            
-            UIAlertAction* noButton = [UIAlertAction
-                                       actionWithTitle:@"Change Email"
-                                       style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {
-                                           //Handle no, thanks button
-                                           //[LoggingHelper reportLogsDataToAnalytics:CHANGED_PHONE_NO];
-                                           self->email.text = @"";
-                                           
-                                       }];
-            
-            [noButton setValue:[UIColor grayColor] forKey:@"titleTextColor"];
-            [alert addAction:noButton];
             [alert addAction:yesButton];
             [self presentViewController:alert animated:YES completion:nil];
             
@@ -288,13 +246,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

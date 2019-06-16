@@ -10,6 +10,7 @@
 #import "SignupLoginViewController.h"
 #import "SignupWithEmailViewController.h"
 #import "LoggingHelper.h"
+#import "SigninWithEmailViewController.h"
 
 @interface SignupLoginViewController ()
 
@@ -92,10 +93,20 @@
         
         self.navigationItem.title = @"Step 2 of 4";
         signupWithEmail.userInteractionEnabled = YES;
+        signIn.userInteractionEnabled = YES;
+
         UITapGestureRecognizer *tapGesture = \
         [[UITapGestureRecognizer alloc]
          initWithTarget:self action:@selector(signupEmail:)];
         [signupWithEmail addGestureRecognizer:tapGesture];
+
+        
+        UITapGestureRecognizer *tapGesture1 = \
+        [[UITapGestureRecognizer alloc]
+         initWithTarget:self action:@selector(signinEmail:)];
+        [signIn addGestureRecognizer:tapGesture1];
+
+        
         [LoggingHelper reportLogsDataToAnalytics:SIGNUP_VIEW_VISIBLE];
     }
     return self;
@@ -111,5 +122,15 @@
         NSLog(@"Completed");
     }];    
 }
+
+- (void) signinEmail:(UITapGestureRecognizer *)tapGesture {
+    SigninWithEmailViewController *vc = [[SigninWithEmailViewController alloc] init];
+    
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:navigation animated:YES completion:^{
+        NSLog(@"Completed");
+    }];
+}
+
 
 @end
