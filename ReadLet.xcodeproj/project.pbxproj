@@ -26,6 +26,8 @@
 		8559BB8622B0949300AF485E /* SignupWithEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8559BB8522B0949300AF485E /* SignupWithEmailViewController.m */; };
 		8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAA7229E35EE003E22F6 /* LoggingHelper.m */; };
 		8565CAAC229E577C003E22F6 /* RequestForNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */; };
+		857D767622B75406003EB2F7 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D767522B75406003EB2F7 /* Helper.m */; };
+		859FD9F322B6EAFA00780DDC /* LoginWithGoogleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 859FD9F222B6EAFA00780DDC /* LoginWithGoogleButton.m */; };
 		85B1DEDA228E597100B1F06D /* NameAddRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */; };
 		85B1DEDD228E5DEF00B1F06D /* SubscribeNewsletterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDC228E5DEF00B1F06D /* SubscribeNewsletterViewController.m */; };
 		85B1DEE0228E63EC00B1F06D /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B1DEDF228E63EC00B1F06D /* Provider.m */; };
@@ -95,6 +97,10 @@
 		8565CAA9229E5229003E22F6 /* ReadLet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadLet.entitlements; sourceTree = "<group>"; };
 		8565CAAA229E577C003E22F6 /* RequestForNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestForNotificationViewController.h; sourceTree = "<group>"; };
 		8565CAAB229E577C003E22F6 /* RequestForNotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestForNotificationViewController.m; sourceTree = "<group>"; };
+		857D767422B75406003EB2F7 /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		857D767522B75406003EB2F7 /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		859FD9F122B6EAFA00780DDC /* LoginWithGoogleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginWithGoogleButton.h; sourceTree = "<group>"; };
+		859FD9F222B6EAFA00780DDC /* LoginWithGoogleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginWithGoogleButton.m; sourceTree = "<group>"; };
 		85B1DED8228E597100B1F06D /* NameAddRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameAddRegistrationViewController.h; sourceTree = "<group>"; };
 		85B1DED9228E597100B1F06D /* NameAddRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameAddRegistrationViewController.m; sourceTree = "<group>"; };
 		85B1DEDB228E5DEF00B1F06D /* SubscribeNewsletterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeNewsletterViewController.h; sourceTree = "<group>"; };
@@ -289,6 +295,8 @@
 				85B1DEE2228E64FF00B1F06D /* ProviderElementView.m */,
 				850942642291A7A4004A7B4C /* HeaderView.h */,
 				850942652291A7A4004A7B4C /* HeaderView.m */,
+				859FD9F122B6EAFA00780DDC /* LoginWithGoogleButton.h */,
+				859FD9F222B6EAFA00780DDC /* LoginWithGoogleButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +306,8 @@
 			children = (
 				8565CAA6229E35EE003E22F6 /* LoggingHelper.h */,
 				8565CAA7229E35EE003E22F6 /* LoggingHelper.m */,
+				857D767422B75406003EB2F7 /* Helper.h */,
+				857D767522B75406003EB2F7 /* Helper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -546,6 +556,8 @@
 				8565CAA8229E35EE003E22F6 /* LoggingHelper.m in Sources */,
 				8505155122B59983004090A3 /* SigninWithEmailViewController.m in Sources */,
 				8559BB8322AF4BD300AF485E /* SignupLoginViewController.m in Sources */,
+				859FD9F322B6EAFA00780DDC /* LoginWithGoogleButton.m in Sources */,
+				857D767622B75406003EB2F7 /* Helper.m in Sources */,
 				853136B922812EA0009EB0D2 /* NewsLetterElementView.m in Sources */,
 				85DFF9A2228E3066000216C5 /* OTPVerificationViewController.m in Sources */,
 				85C535652294743A00BA9899 /* APPChildViewController.m in Sources */,

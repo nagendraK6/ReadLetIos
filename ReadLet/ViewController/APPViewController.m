@@ -15,7 +15,7 @@
 @interface APPViewController () 
 
 {
-    UIImageView *_start_reading;
+    UILabel *_start_reading;
     UILabel *tc_line_1;
     UILabel *tc_line_2;
     UILabel *tc_line_3;
@@ -29,8 +29,23 @@
 {
     self = [super init];
     if (self) {
-        _start_reading = [[UIImageView alloc] init];
-        _start_reading.image = [UIImage imageNamed:@"startreading"];
+        _start_reading = [[UILabel alloc] init];
+        _start_reading.backgroundColor = [UIColor colorWithRed:70.0f/255.0f green:165.0f/255.0f blue:28.0f/255.0 alpha:1.0f];
+        
+        
+        
+        _start_reading.text = @"Start Reading";
+        _start_reading.textAlignment = NSTextAlignmentCenter;
+        _start_reading.textColor = [UIColor whiteColor];
+        [_start_reading setFont:[UIFont fontWithName:@"AvenirNext-DemiBold" size:24]];
+        
+
+        
+        _start_reading.layer.borderWidth = 1.0;
+        _start_reading.layer.cornerRadius = 7;
+        _start_reading.layer.borderColor = [UIColor whiteColor].CGColor;
+        _start_reading.layer.masksToBounds = true;
+        
         _start_reading.userInteractionEnabled = YES;
         [self setupviews];
     }
@@ -115,9 +130,7 @@
 }
 
 - (void) setupviews {
-    _start_reading = [[UIImageView alloc] init];
-    _start_reading.image = [UIImage imageNamed:@"startreading"];
-    _start_reading.userInteractionEnabled = YES;
+
     
     UITapGestureRecognizer *tapGesture = \
     [[UITapGestureRecognizer alloc]

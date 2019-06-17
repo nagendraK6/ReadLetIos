@@ -17,7 +17,7 @@
 #import "AFNetworking.h"
 #import "ContentViewController.h"
 #import "SignupLoginViewController.h"
-
+#import "SigninWithEmailViewController.h"
 
 @interface AppDelegate ()
 

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @import GoogleSignIn;
+#import "LoginWithGoogleButton.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SignupLoginViewController : UIViewController <GIDSignInUIDelegate>
+@interface SignupLoginViewController : UIViewController <GIDSignInUIDelegate, LoginWithGoogleButtonDelegate>
 
 @end
 

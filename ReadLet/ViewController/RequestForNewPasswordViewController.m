@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 #import "RequestForNotificationViewController.h"
 #import "RequestForNewPasswordViewController.h"
+#import "LoggingHelper.h"
+#import "Helper.h"
 
 @interface RequestForNewPasswordViewController ()
 
@@ -22,6 +24,7 @@
     UITextField *password_reset_code;
     UITextField *email;
     UITextField *password;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
 - (void)viewDidLoad {
@@ -31,9 +34,9 @@
     
     email.frame = CGRectMake(48, 170, self.view.frame.size.width - 96, 52);
     password_reset_code.frame = CGRectMake(48, 230, self.view.frame.size.width - 96, 52);
-    password.frame = CGRectMake(48, 350, self.view.frame.size.width - 96, 52);
+    password.frame = CGRectMake(48, 300, self.view.frame.size.width - 96, 52);
     
-    next.frame = CGRectMake(self.view.frame.size.width /2 - 75, 420, 151, 48);
+    next.frame = CGRectMake(self.view.frame.size.width /2 - 75, 370, 151, 48);
     title.frame = CGRectMake(16, 100, self.view.frame.size.width - 96, 61);
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12.5, 20)];
@@ -108,6 +111,27 @@
 }
 
 - (void) resetPasswordRequest:(UITapGestureRecognizer *)tapGesture {
+    if (password.text.length < 8 ) {
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Password invalid"
+                                     message:@"Password must have at least 8 characters"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                        
+                                    }];
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
     next.image = [UIImage imageNamed:@"nextgray"];
     [next setUserInteractionEnabled:NO];
     [self sendPasswordReset];
@@ -131,7 +155,7 @@
     self = [super init];
     if (self) {
         title = [[UILabel alloc] init];
-        title.text = @"Sign up with email";
+        title.text = @"Update password";
         [title setFont:[UIFont fontWithName:@"AvenirNext-DemiBold" size:18]];
         title.textColor = [UIColor colorWithRed:74.0f/255.0f
                                           green:74.0f/255.0f
@@ -163,19 +187,38 @@
         [self.view addSubview:email];
         [self.view addSubview:password];
         
-        [self.view addSubview:title];
+        //[self.view addSubview:title];
         [self.view addSubview:next];
-        self.navigationItem.title = @"Step 3 of 4";
+        self.navigationItem.title = @"Update password";
+        
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.width/2)];
+        [self.view addSubview:_activityIndicator];
+        
+        UIBarButtonItem *left_btn = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(leftBtnClick)];
+        left_btn.tintColor = [UIColor colorWithRed:0.0f/255.0f green:118.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+        [left_btn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIFont fontWithName:@"Arial-BoldMT" size:18.0], NSFontAttributeName,
+                                          
+                                          nil]
+                                forState:UIControlStateNormal];
+        
+        self.navigationItem.leftBarButtonItem=left_btn;
     }
     return self;
 }
 
 
+- (void) leftBtnClick {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void) sendPasswordReset {
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
     NSDictionary *user_info = [data objectForKey:@"user_info"];
     NSArray *selected_provider_ids = [user_info objectForKey:@"selected_provider_ids"];
-    
+    [_activityIndicator startAnimating];
+
     NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/password_reset"];
     NSURL *URL = [NSURL URLWithString:urlstring];
     
@@ -195,6 +238,8 @@
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSString *error_message = [responseDictionary objectForKey:@"error_message"];
         if ([error_message isEqualToString:@"SUCCESS"]) {
+            
+            [LoggingHelper reportLogsDataToAnalytics:PASSWORD_RESET_SUCCESS];
             
             
             NSDictionary *old_info = [data objectForKey:@"user_info"];
@@ -217,7 +262,8 @@
         } else {
             // existing user case
             
-            
+            [LoggingHelper reportLogsDataToAnalytics:PASSWORD_RESET_INCORRECT_RESET_CODE];
+
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:@"Password reset"
                                          message:@"Your password reset code is incorrect. Try again or you can request again from the below link."
@@ -237,6 +283,8 @@
             
             
         }
+        
+        [_activityIndicator stopAnimating];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

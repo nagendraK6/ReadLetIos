@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
 }
 
 
@@ -37,7 +36,8 @@
         webView.navigationDelegate = self;
         NSURL *nsurl=[NSURL URLWithString:url_link];
         current_url = url_link;
-        NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+        NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
+        [nsrequest setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
         [webView loadRequest:nsrequest];
         [self.view addSubview:webView];
         

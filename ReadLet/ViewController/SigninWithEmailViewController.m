@@ -11,6 +11,9 @@
 #import "AFNetworking.h"
 #import "RequestForNotificationViewController.h"
 #import "RequestForNewPasswordViewController.h"
+#import "LoggingHelper.h"
+#import "Helper.h"
+
 @interface SigninWithEmailViewController ()
 
 @end
@@ -22,6 +25,7 @@
     UITextField *password;
     UIImageView *next;
     UILabel *forgot_password;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
 - (void)viewDidLoad {
@@ -29,11 +33,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    email.frame = CGRectMake(48, 290, self.view.frame.size.width - 96, 52);
-    password.frame = CGRectMake(48, 350, self.view.frame.size.width - 96, 52);
+    email.frame = CGRectMake(48, 150, self.view.frame.size.width - 96, 52);
+    password.frame = CGRectMake(48, 225, self.view.frame.size.width - 96, 52);
     
-    next.frame = CGRectMake(self.view.frame.size.width /2 - 75, 420, 151, 48);
-    forgot_password.frame = CGRectMake(self.view.frame.size.width /2 - 75, 500, 151, 48);
+    next.frame = CGRectMake(self.view.frame.size.width /2 - 75, 300, 151, 48);
+    forgot_password.frame = CGRectMake(self.view.frame.size.width /2 - 100, 370, 200, 48);
     
     title.frame = CGRectMake(16, 100, self.view.frame.size.width - 96, 61);
     
@@ -83,6 +87,7 @@
     [[UITapGestureRecognizer alloc]
      initWithTarget:self action:@selector(resetPasswordSend:)];
     [forgot_password addGestureRecognizer:tapForgotPasswordGesture];
+    [LoggingHelper reportLogsDataToAnalytics:SIGNIN_WITH_EMAIL_VISIBLE];
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
@@ -98,13 +103,51 @@
 }
 
 - (void) signupEmail:(UITapGestureRecognizer *)tapGesture {
-    next.image = [UIImage imageNamed:@"nextgray"];
-    [next setUserInteractionEnabled:NO];
+    if ([Helper validateEmailWithString:email.text] == NO) {
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Email incorrect"
+                                     message:@"Email has invalid characters"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                        
+                                    }];
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     [self sendSignInWithEmail];
 }
 
 
 - (void) resetPasswordSend:(UITapGestureRecognizer *)tapGesture {
+    if ([Helper validateEmailWithString:email.text] == NO) {
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Email incorrect"
+                                     message:@"Email has invalid characters"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                        
+                                    }];
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     [self showForgotPasswordPopup];
 }
 
@@ -157,20 +200,44 @@
     
     forgot_password = [[UILabel alloc] init];
     forgot_password.text = @"Forgot password?";
-    forgot_password.textColor = [UIColor blueColor];
+    forgot_password.textColor  = [UIColor colorWithRed:0.00f/255.0f
+                                                            green:118.00f/255.0f
+                                                             blue:255.0f/255.0f
+                                                            alpha:1.0f];
     forgot_password.textAlignment = NSTextAlignmentCenter;
+    forgot_password.textAlignment = NSTextAlignmentCenter;
+    [forgot_password setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
     
     
     [self.view addSubview:email];
     [self.view addSubview:password];
     [self.view addSubview:forgot_password];
     
-    [self.view addSubview:title];
+   // [self.view addSubview:title];
     [self.view addSubview:next];
-    self.navigationItem.title = @"Step 3 of 4";
+    self.navigationItem.title = @"Sign in";
 
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.width/2)];
+    [self.view addSubview:_activityIndicator];
+    
+    
+    UIBarButtonItem *left_btn = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(leftBtnClick)];
+    left_btn.tintColor = [UIColor colorWithRed:0.0f/255.0f green:118.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+    [left_btn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIFont fontWithName:@"Arial-BoldMT" size:18.0], NSFontAttributeName,
+                                        
+                                        nil]
+                              forState:UIControlStateNormal];
+    
+    self.navigationItem.leftBarButtonItem=left_btn;
+    
 }
 
+
+- (void) leftBtnClick {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (instancetype)initWithEmail:(NSString *)email_to_show
 {
@@ -191,6 +258,8 @@
     NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/login_with_email"];
     NSURL *URL = [NSURL URLWithString:urlstring];
     
+    [_activityIndicator startAnimating];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{
                                  @"provider_ids": selected_provider_ids,
@@ -206,7 +275,8 @@
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSString *error_message = [responseDictionary objectForKey:@"error_message"];
         if ([error_message isEqualToString:@"SUCCESS"]) {
-            
+            [LoggingHelper reportLogsDataToAnalytics:SIGNIN_WITH_EMAIL_SUCCESS];
+
             
             NSDictionary *old_info = [data objectForKey:@"user_info"];
             NSMutableDictionary *user_info = [[NSMutableDictionary alloc] initWithDictionary:old_info];
@@ -227,7 +297,8 @@
             }];
         } else {
             // existing user case
-            
+            [LoggingHelper reportLogsDataToAnalytics:SIGNIN_WITH_EMAIL_PASSWORD_INCORRECT];
+
             
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:@"Password incorrect"
@@ -246,6 +317,9 @@
             [alert addAction:yesButton];
             [self presentViewController:alert animated:YES completion:nil];
         }
+        
+        [self->_activityIndicator stopAnimating];
+
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -257,6 +331,9 @@
     NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/send_reset_password_key"];
     NSURL *URL = [NSURL URLWithString:urlstring];
     
+    [_activityIndicator startAnimating];
+    [LoggingHelper reportLogsDataToAnalytics:SIGNIN_WITH_EMAIL_CLICKED_FORGOT_PASSWORD];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{
                                  @"email" : email.text
@@ -270,12 +347,33 @@
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSString *error_message = [responseDictionary objectForKey:@"error_message"];
         if ([error_message isEqualToString:@"SUCCESS"]) {
-           RequestForNewPasswordViewController *vc = [[RequestForNewPasswordViewController alloc] initWithEmail:email.text];
+            RequestForNewPasswordViewController *vc = [[RequestForNewPasswordViewController alloc] initWithEmail:self->email.text];
             UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
             [self presentViewController:navigation animated:YES completion:^{
                 NSLog(@"Completed");
             }];
         }
+        
+        if ([error_message isEqualToString:@"EMAIL_DOES_NOT_EXIST"]) {
+            UIAlertController * alert = [UIAlertController
+                                         alertControllerWithTitle:@"Email doesn't exist"
+                                         message:@"This email doesn't exist."
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            
+            
+            UIAlertAction* yesButton = [UIAlertAction
+                                        actionWithTitle:@"OK"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * action) {
+                                            //Handle your yes please button action here
+                                        }];
+            
+            [alert addAction:yesButton];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
+        [self->_activityIndicator stopAnimating];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -291,7 +389,7 @@
     
     
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"OK"
+                                actionWithTitle:@"Send"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     //Handle your yes please button action here
@@ -299,6 +397,17 @@
                                     [self sendPasswordResetKey];
                                 }];
     
+    
+    UIAlertAction* cancel = [UIAlertAction
+                               actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle no, thanks button
+                                   //[LoggingHelper reportLogsDataToAnalytics:CHANGED_PHONE_NO];
+                               }];
+    
+    [cancel setValue:[UIColor grayColor] forKey:@"titleTextColor"];
+    [alert addAction:cancel];
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
     

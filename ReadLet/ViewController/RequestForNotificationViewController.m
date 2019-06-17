@@ -66,11 +66,11 @@
         description.lineBreakMode = NSLineBreakByWordWrapping;
         description.numberOfLines = 0;
         
-        [self.view addSubview:title];
+        //[self.view addSubview:title];
         [self.view addSubview:description];
         [self.view addSubview:skip];
         [self.view addSubview:allow];
-        self.navigationItem.title = @"Step 4 of 4";
+        self.navigationItem.title = @"Allow us to notify you";
         
         
         allow.userInteractionEnabled = YES;

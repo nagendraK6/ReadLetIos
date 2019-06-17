@@ -11,6 +11,8 @@
 #import "Constants.h"
 #import "AFNetworking.h"
 #import "RequestForNotificationViewController.h"
+#import "LoggingHelper.h"
+#import "Helper.h"
 
 @interface SignupWithEmailViewController ()
 
@@ -24,6 +26,7 @@
     UITextField *last_name;
     UITextField *email;
     UITextField *password;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
 - (void)viewDidLoad {
@@ -110,6 +113,7 @@
      initWithTarget:self action:@selector(signupEmail:)];
     [next addGestureRecognizer:tapGesture];
     
+    [LoggingHelper reportLogsDataToAnalytics:SIGNUP_WITH_EMAIL_VISIBLE];
 
 }
 
@@ -126,9 +130,47 @@
 }
 
 - (void) signupEmail:(UITapGestureRecognizer *)tapGesture {
-    next.image = [UIImage imageNamed:@"nextgray"];
-    [next setUserInteractionEnabled:NO];
-    [self sendSignupWithEmail];
+    if ([Helper validateEmailWithString:email.text] == NO) {
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Email incorrect"
+                                     message:@"Email has invalid characters"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                        
+                                    }];
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else  if (password.text.length < 8){
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Password invalid"
+                                     message:@"Password must have at least 8 characters."
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                        
+                                    }];
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        next.image = [UIImage imageNamed:@"nextgray"];
+        [next setUserInteractionEnabled:NO];
+        [self sendSignupWithEmail];
+    }
 }
 
 
@@ -186,9 +228,24 @@
         [self.view addSubview:email];
         [self.view addSubview:password];
 
-        [self.view addSubview:title];
+        //[self.view addSubview:title];
         [self.view addSubview:next];
-        self.navigationItem.title = @"Step 3 of 4";
+        self.navigationItem.title = @"Sign up with email";
+        
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [_activityIndicator setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.width/2)];
+        [self.view addSubview:_activityIndicator];
+        
+        UIBarButtonItem *left_btn = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(leftBtnClick)];
+        left_btn.tintColor = [UIColor colorWithRed:0.0f/255.0f green:118.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+        [left_btn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIFont fontWithName:@"Arial-BoldMT" size:18.0], NSFontAttributeName,
+                                          
+                                          nil]
+                                forState:UIControlStateNormal];
+        
+        self.navigationItem.leftBarButtonItem=left_btn;
+
     }
     return self;
 }
@@ -202,6 +259,7 @@
     NSString *urlstring =  [NSString stringWithFormat: APP_URL_WITH_PARAM,@"registration/signup_with_email"];
     NSURL *URL = [NSURL URLWithString:urlstring];
     
+    [_activityIndicator startAnimating];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{
                                  @"provider_ids": selected_provider_ids,
@@ -214,13 +272,13 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager POST:URL.absoluteString parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"send device token JSON: %@", responseObject);
         // save the user token from the server
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSString *error_message = [responseDictionary objectForKey:@"error_message"];
         if ([error_message isEqualToString:@"SUCCESS"]) {
             
-            
+            [LoggingHelper reportLogsDataToAnalytics:SIGNUP_WITH_EMAIL_SUCCESS];
+
             NSDictionary *old_info = [data objectForKey:@"user_info"];
             NSMutableDictionary *user_info = [[NSMutableDictionary alloc] initWithDictionary:old_info];
 
@@ -241,7 +299,8 @@
         } else {
             // existing user case
             
-            
+            [LoggingHelper reportLogsDataToAnalytics:SIGNUP_WITH_EMAIL_EXISTING_ACCOUNT];
+
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:@"Existing account"
                                          message:@"The email id already in use. Use other email id or login with this email id."
@@ -279,12 +338,21 @@
             
             
         }
+        
+        [_activityIndicator stopAnimating];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
 }
 
 
+
+
+
+
+- (void) leftBtnClick {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 /*

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.683691"
+            timestampString = "582443401.647523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-fetchData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.6953731"
+            timestampString = "582443401.647609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-fetchData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.69626"
+            timestampString = "582443401.647675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.697069"
+            timestampString = "582443401.647737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-collectionView:numberOfItemsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.697408"
+            timestampString = "582443401.647796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-onProviderClick:isHidden:"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.69767"
+            timestampString = "582443401.647858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-onProviderClick:isHidden:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.697924"
+            timestampString = "582443401.647904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "-sendToServer"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.698168"
+            timestampString = "582443401.647947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-sendToServer"
             landmarkType = "7">
             <Locations>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.698406"
+            timestampString = "582443401.647988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-sendToServer"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.698799"
+            timestampString = "582443401.64803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-sendToServer"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.699181"
+            timestampString = "582443401.64807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-fetchData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/APPChildViewController.m"
-            timestampString = "581919076.142565"
+            timestampString = "582442548.229835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/APPViewController.m"
-            timestampString = "582182587.55162"
+            timestampString = "582443401.648134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-presentationCountForPageViewController:"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/APPViewController.m"
-            timestampString = "582182587.55167"
+            timestampString = "582443401.648186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-presentationIndexForPageViewController:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.6998399"
+            timestampString = "582443401.648316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.7001981"
+            timestampString = "582443401.648358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/RequestForNotificationViewController.m"
-            timestampString = "582353435.1953779"
+            timestampString = "582443401.648419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/ContentViewController.m"
-            timestampString = "581814574.966451"
+            timestampString = "582424673.85308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/ContentViewController.m"
-            timestampString = "581814574.966498"
+            timestampString = "582424673.8534141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/ContentViewController.m"
-            timestampString = "581814574.966538"
+            timestampString = "582424673.853501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/ContentViewController.m"
-            timestampString = "581814574.966579"
+            timestampString = "582424673.853583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/ContentViewController.m"
-            timestampString = "581814574.966617"
+            timestampString = "582424673.8536479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.700608"
+            timestampString = "582443401.648525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-fetchData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,7 +570,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.700863"
+            timestampString = "582443401.648568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "-fetchData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
+            timestampString = "582443401.64861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -586,27 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.701153"
+            timestampString = "582443401.6486501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-fetchData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReadLet/ViewController/SubscribeNewsletterViewController.m"
-            timestampString = "582324683.7014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-onInfoClick:description:"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/Views/ProviderElementView.m"
-            timestampString = "582094314.465287"
+            timestampString = "582414808.341931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -634,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/Views/ProviderElementView.m"
-            timestampString = "582094314.4653471"
+            timestampString = "582414808.341996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -650,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555364"
+            timestampString = "582414913.430871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -666,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555462"
+            timestampString = "582414913.4313281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555546"
+            timestampString = "582414913.431638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "233"
@@ -698,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555668"
+            timestampString = "582414913.431944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
@@ -710,11 +710,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555775"
+            timestampString = "582414913.432249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -726,11 +726,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555881"
+            timestampString = "582414913.43255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -746,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.555984"
+            timestampString = "582414913.43285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -762,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/AppDelegate.m"
-            timestampString = "582186417.55608"
+            timestampString = "582414913.433206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/APPViewController.m"
-            timestampString = "582182587.5549361"
+            timestampString = "582443401.648833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-didTapLabelWithGesture:"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SignupLoginViewController.m"
-            timestampString = "582353435.195874"
+            timestampString = "582443401.648899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SignupLoginViewController.m"
-            timestampString = "582353435.196337"
+            timestampString = "582443401.648962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-signupEmail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SignupWithEmailViewController.m"
-            timestampString = "582353435.19669"
+            timestampString = "582443401.6490099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-sendSignupWithEmail"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SignupWithEmailViewController.m"
-            timestampString = "582353435.196763"
+            timestampString = "582443401.649056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "-sendSignupWithEmail"
             landmarkType = "7">
          </BreakpointContent>
@@ -858,12 +858,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReadLet/ViewController/SignupWithEmailViewController.m"
-            timestampString = "582353435.196833"
+            timestampString = "582443401.649101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-sendSignupWithEmail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/ViewController/SigninWithEmailViewController.m"
+            timestampString = "582443401.649147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-sendSignInWithEmail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/ViewController/SigninWithEmailViewController.m"
+            timestampString = "582443401.649196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-sendSignInWithEmail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/ViewController/SigninWithEmailViewController.m"
+            timestampString = "582443401.649244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-sendSignInWithEmail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/Views/LoginWithGoogleButton.m"
+            timestampString = "582443401.649295"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-handleSingleTap:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadLet/ViewController/SignupLoginViewController.m"
+            timestampString = "582443401.649336"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-onClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

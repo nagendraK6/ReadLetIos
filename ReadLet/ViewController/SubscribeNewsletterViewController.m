@@ -105,8 +105,17 @@
     NSString *next_title = init_standalone == YES ? @"Next" : @"Save";
     
     UIBarButtonItem *next_button = [[UIBarButtonItem alloc]initWithTitle:next_title style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClick)];
+    [next_button setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                         [UIFont fontWithName:@"Arial-BoldMT" size:18.0], NSFontAttributeName,
+                                         
+                                         nil]
+                               forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem=next_button;
-    self.navigationItem.title = @"Step 1 of 4";
+    
+
+    
+    
+    self.navigationItem.title = @"Select newsletters from below";
     
     title = [[UILabel alloc] init];
     title.text = @"Select newsletters from below";
