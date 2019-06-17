@@ -55,7 +55,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     blue_label.frame = CGRectMake(0, 0, self.frame.size.width, 60);
-    google_logo.frame = CGRectMake(0 , 0, 60, 60);
+    google_logo.frame = CGRectMake(0 , 2, 55, 55);
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
