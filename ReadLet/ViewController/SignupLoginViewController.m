@@ -160,6 +160,7 @@
 
 
 - (void) onClick {
+    [_activityIndicator startAnimating];
     [LoggingHelper reportLogsDataToAnalytics:SIGNUP_WITH_GOOGLE_CLICKED];
     [[GIDSignIn sharedInstance] signIn];
 }

@@ -17,7 +17,11 @@
 }
 
 + (void) reportLogsDataToAnalytics:(NSString *)event_name {
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Sending amplitude log ignored");
+#elif TARGET_OS_IPHONE
     [[Amplitude instance] logEvent:event_name];
+#endif
     return;
 }
 

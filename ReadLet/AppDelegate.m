@@ -170,6 +170,9 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 }
 
 - (void) sendGoogleLogin:(GIDGoogleUser *)user {
+    if (user == nil)
+        return;
+    
     NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
     NSDictionary *user_info = [data objectForKey:@"user_info"];
     NSArray *selected_provider_ids = [user_info objectForKey:@"selected_provider_ids"];

@@ -92,11 +92,10 @@
 - (void) allowClicked:(UITapGestureRecognizer *)tapGesture {
     // popup
 #if TARGET_IPHONE_SIMULATOR
-#elif TARGET_OS_IPHONE
-    [self registerForRemoteNotifications];
-#else
     MainScreenViewController *vc = [[MainScreenViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
+#elif TARGET_OS_IPHONE
+    [self registerForRemoteNotifications];
 #endif
 }
 
