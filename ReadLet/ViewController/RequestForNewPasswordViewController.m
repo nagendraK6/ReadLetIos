@@ -227,7 +227,7 @@
                                  @"provider_ids": selected_provider_ids,
                                  @"email": email.text,
                                  @"password": password.text,
-                                 @"password_reset_code": password.text
+                                 @"password_reset_code": password_reset_code.text
                                  };
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
