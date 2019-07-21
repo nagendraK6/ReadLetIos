@@ -265,8 +265,8 @@
             [LoggingHelper reportLogsDataToAnalytics:PASSWORD_RESET_INCORRECT_RESET_CODE];
 
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:@"Password reset"
-                                         message:@"Your password reset code is incorrect. Try again or you can request again from the below link."
+                                         alertControllerWithTitle:@"Incorrect reset code"
+                                         message:@"Please incorrect the correct reset code and try again"
                                          preferredStyle:UIAlertControllerStyleAlert];
             
             

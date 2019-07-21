@@ -133,7 +133,7 @@
     if ([Helper validateEmailWithString:email.text] == NO) {
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:@"Email incorrect"
-                                     message:@"Email has invalid characters"
+                                     message:@"Please enter a valid email"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
         

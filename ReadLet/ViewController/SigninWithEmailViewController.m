@@ -106,7 +106,7 @@
     if ([Helper validateEmailWithString:email.text] == NO) {
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:@"Email incorrect"
-                                     message:@"Email has invalid characters"
+                                     message:@"Please enter a valid email"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
         
@@ -131,7 +131,7 @@
     if ([Helper validateEmailWithString:email.text] == NO) {
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:@"Email incorrect"
-                                     message:@"Email has invalid characters"
+                                     message:@"Please enter a valid email"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
         
@@ -383,7 +383,7 @@
 - (void) showForgotPasswordPopup {
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Password Reset"
-                                 message:@"You are going to receive password reset code in your email id Using this reset code you will be able to reset your password"
+                                 message:@"We will send a 4-digit reset code to your email. Please enter the reset code on the next screen here to change your password. If you don't receive the email, please check your spam"
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     
